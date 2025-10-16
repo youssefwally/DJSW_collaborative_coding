@@ -1,6 +1,14 @@
+python=3.12
 mkdocs
 pip
 pytest
 python-dotenv
 ruff
+scikit-learn
+torch
+tqdm
+torchvision
+ConfigArgParse
+h5py
+hdf5plugin
 -e .
