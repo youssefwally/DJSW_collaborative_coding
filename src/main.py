@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
 # -----------------------------------------------------
 #Imports
 
@@ -6,6 +9,9 @@ import sys
 import traceback
 import configargparse
 
+import torch
+import numpy as np
+import random
 from eval import eval_model
 from train import train_model
 # -----------------------------------------------------
@@ -13,10 +19,11 @@ from train import train_model
 
 def getArguments():
     """ Parses command-line options. """
+    parser = configargparse.ArgumentParser(description='Training and Evaluation Script', add_help=True)
 
     # User setting
-    parser.add_argument('--username', default='CIFAR-10', type=str, required=True, 
-                        choices=["Dennis", "Johannes", "Sigurd", "Waly"], help = "Select a User.")
+    parser.add_argument('--username', default=None, type=str, required=True, 
+                        choices=["dennis", "johannes", "sigurd", "waly"], help = "Select a User.")
 
     # Output settings
     parser.add_argument('--exp_name', default=None, type=str, required=True, 
@@ -48,6 +55,8 @@ def main(args):
     if args.train:
         train_model(args)
     else:
+        if args.load_checkpoint is None:
+            raise ValueError("For evaluation, a model checkpoint must be provided using --load_checkpoint.")
         eval_model(args)
 # -----------------------------------------------------
 if __name__ == '__main__':
