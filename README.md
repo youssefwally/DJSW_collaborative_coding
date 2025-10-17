@@ -51,7 +51,7 @@ Efficient Lumi-friendly ML Pipeline
 │
 ├── setup.cfg          <- Configuration file for flake8
 │
-└── src   <- Source code for use in this project.
+└── DJSW               <- Source code for use in this project.
     │
     ├── __init__.py             <- Makes src a Python module
     │
