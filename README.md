@@ -79,7 +79,7 @@ Efficient Lumi-friendly ML Pipeline
 ## Results
 | Model | Accuracy | Precision | Recall | Balanced Accuracy |
 |-------|----------|-----------|--------|-------------------|
-| WMLP | 0.00 | 0.00 | 0.00 | 93.81% |
+| WMLP | 0.00 | 0.00 | 0.00 | 0.00 |
 | Model 2 | 0.00 | 0.00 | 0.00 | 0.00 |
 | Model 3 | 0.00 | 0.00 | 0.00 | 0.00 |
 | Model 4 | 0.00 | 0.00 | 0.00 | 0.00 |
