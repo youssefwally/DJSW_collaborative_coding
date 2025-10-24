@@ -1,7 +1,10 @@
-Generating the docs
-----------
+# Generating the docs
 
 Use [sphinx](http://www.sphinx-doc.org/) structure to update the documentation. 
+
+Add dependencies:
+
+    pip install -r docs/requirements-docs.txt 
 
 Build locally with:
 

@@ -24,7 +24,14 @@ release = '0.1'
 
 extensions = [
     "myst_parser",  # in order to use markdown
+    "autoapi.extension", # to autobuild api from docstrings
 ]
+
+# search this directory for Python files
+autoapi_dirs = [".."]
+
+# ignore this file when generating API documentation
+autoapi_ignore = ["*/conf.py"]
 
 templates_path = ['_templates']
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
