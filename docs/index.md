@@ -12,6 +12,9 @@ The Makefile contains the central entry points for common tasks related to this 
 :maxdepth: 2
 :caption: Contents:
 
-about.md
+pages/about.md
+pages/getting-started.md
 README.md
+pages/individual_reports/johannes.md
+pages/individual_reports/wally.md
 :::
