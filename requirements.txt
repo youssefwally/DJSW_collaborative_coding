@@ -1,6 +1,9 @@
-mkdocs
-pip
-pytest
-python-dotenv
-ruff
+python=3.12
+pip>=25.2
+scikit-learn>=1.7.2
+torch>=2.9.0
+torchvision>=0.24.0
+ConfigArgParse>=1.7.1
+h5py>=3.15.1
+hdf5plugin>=6.0.0
 -e .

@@ -1,0 +1,7 @@
+odict_keys(['fc1.weight', 'fc1.bias', 'fc2.weight', 'fc2.bias', 'fc3.weight', 'fc3.bias'])
+Evaluation Results:
+MSE: 0.4924
+RMSE: 0.7017
+MAE: 0.1430
+R²: 0.8844
+Balanced Accuracy: 0.9381

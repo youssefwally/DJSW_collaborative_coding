@@ -1,16 +1,25 @@
 # DJSW_collabrative_coding
 
-<a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
-    <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
-</a>
+[![CCDS Project Template](https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter)](https://cookiecutter-data-science.drivendata.org/)
+[![Documentation Status](https://readthedocs.org/projects/djsw-collabrative-coding/badge/?version=latest)](https://djsw-collabrative-coding.readthedocs.io/en/latest/?badge=latest)
+[![PyPI version](https://badge.fury.io/py/djsw-collabrative-coding.svg)](https://badge.fury.io/py/djsw-collabrative-coding)
+[![Python version](https://img.shields.io/pypi/pyversions/djsw-collabrative-coding)](https://pypistats.org/packages/djsw-collabrative-coding)
+[![License: MIT](https://img.shields.io/github/license/youssefwally/DJSW_collabrative_coding)](https://github.com/youssefwally/DJSW_collabrative_coding/blob/master/LICENSE)
+[![Contributors](https://img.shields.io/github/contributors-anon/youssefwally/DJSW_collabrative_coding)](https://github.com/youssefwally/DJSW_collabrative_coding/graphs/contributors)
+[![Issues](https://img.shields.io/github/issues/youssefwally/DJSW_collabrative_coding)](https://github.com/youssefwally/DJSW_collabrative_coding/issues)
+[![Forks](https://img.shields.io/github/forks/youssefwally/DJSW_collabrative_coding)](https://github.com/youssefwally/DJSW_collabrative_coding/network/members)
+[![Stars](https://img.shields.io/github/stars/youssefwally/DJSW_collabrative_coding)](https://github.com/youssefwally/DJSW_collabrative_coding/stargazers)
+[![Last Commit](https://img.shields.io/github/last-commit/youssefwally/DJSW_collabrative_coding)](https://github.com/youssefwally/DJSW_collabrative_coding/commits/master)
+[![Repo Size](https://img.shields.io/github/repo-size/youssefwally/DJSW_collabrative_coding)](https://github.com/youssefwally/DJSW_collabrative_coding)
+<!-- ![tests](https://github.com/youssefwally/DJSW_collabrative_coding/actions/workflows/test_and_deploy.yml/badge.svg) -->
+
 
 Efficient Lumi-friendly ML Pipeline
 
 ## Project Organization
 
 ```
-├── LICENSE            <- Open-source license if one is chosen
-├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
+├── LICENSE            <- Open-source license
 ├── README.md          <- The top-level README for developers using this project.
 ├── data
 │   ├── external       <- Data from third party sources.
@@ -18,9 +27,12 @@ Efficient Lumi-friendly ML Pipeline
 │   ├── processed      <- The final, canonical data sets for modeling.
 │   └── raw            <- The original, immutable data dump.
 │
-├── docs               <- A default mkdocs project; see www.mkdocs.org for details
+├── docs               <- A default mkdocs project.
 │
-├── models             <- Trained and serialized models, model predictions, or model summaries
+├── models             <- Model Architectures.
+│
+├── utils
+│   ├── wdataloader.py <- Custom dataloader for USPS (0-6)
 │
 ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
 │                         the creator's initials, and a short `-` delimited description, e.g.
@@ -39,23 +51,89 @@ Efficient Lumi-friendly ML Pipeline
 │
 ├── setup.cfg          <- Configuration file for flake8
 │
-└── src   <- Source code for use in this project.
+└── DJSW               <- Source code for use in this project.
     │
     ├── __init__.py             <- Makes src a Python module
     │
     ├── config.py               <- Store useful variables and configuration
     │
-    ├── dataset.py              <- Scripts to download or generate data
+    ├── train.py                <- Code to train models
     │
-    ├── features.py             <- Code to create features for modeling
+    ├── eval.py                 <- Code to evaluate trained models
     │
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
-    │   └── train.py            <- Code to train models
-    │
-    └── plots.py                <- Code to create visualizations
+    └── main.py                 <- Main entrance script
 ```
+
+## CITATION
+```bibtex
+@software{DJSW2025,
+  author       = {Dennis and Johannes and Sigurd and Youssef Wally},
+  title        = {DJSW Collaborative Coding Template},
+  year         = {2025},
+  url          = {https://github.com/youssefwally/DJSW_collabrative_coding},
+  version      = {1.0.0},
+  license      = {MIT},
+  note         = {GitHub repository},
+}
+```
+## Results
+| Model | Accuracy | Precision | Recall | Balanced Accuracy |
+|-------|----------|-----------|--------|-------------------|
+| WMLP | 0.00 | 0.00 | 0.00 | 0.00 |
+| Model 2 | 0.00 | 0.00 | 0.00 | 0.00 |
+| Model 3 | 0.00 | 0.00 | 0.00 | 0.00 |
+| Model 4 | 0.00 | 0.00 | 0.00 | 0.00 |
+
+## Installation
+
+### Prerequisites
+- [Conda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda](https://www.anaconda.com/products/distribution)
+- Python 3.12 or higher
+
+### Setup Instructions
+
+1. **Clone the repository**
+    ```bash
+    git clone https://github.com/youssefwally/DJSW_collabrative_coding.git
+    cd DJSW_collabrative_coding
+    ```
+
+2. **Create a conda environment**
+    ```bash
+    conda create -n djsw_env python=3.12
+    conda activate djsw_env
+    ```
+
+3. **Install dependencies**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. **Install the package in development mode** (optional)
+    ```bash
+    pip install -e .
+    ```
+
+### Verify Installation
+```bash
+python -c "import src; print('Installation successful!')"
+```
+
+## WMLP Documentation
+### WMLP
+1. Implemented a WMLP model, 2 hidden layers; 100 neurons each, with LeakyReLU as the activation function.
+2. Model was trained by optimizing the Cross Entropy Loss as USPS is a multi-class classification task.
+3. Model was evaluated with Balanced Accuracy as a evaluation metric to be robustly evaluate the model across different classes.
+### wdataloader
+1. Files are saved in an h5 file to save memory and be compatible with LUMI.
+2. Images are loaded into memory from disk only when needed to not use up memory.
+3. made an function that returns the input dim so that it can be passed directly to the model.
+### Misc
+1. Used CookieCutter to make boilerplate project outlet to follow worldwide code conventions
+2. -Running another persons code section-
+3. --Another persons running my code section--
+4. Sphinx and LUMI
+5. For such a simple project it was fairly easy to run jobs on LUMI. However, I would predict that for a large project with a rapidly changing environment it will be time consuming. (Job-IDs: 13618444, 13631080)
 
 --------
 

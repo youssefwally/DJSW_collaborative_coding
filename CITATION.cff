@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+title: "DJSW Collaborative Coding Template"
+message: "If you use this project, please cite it as below."
+type: software
+
+authors:
+  - name: Dennis
+  - family-names: Mørkrid
+    given-names: Johannes
+  - name: Sigurd
+  - family-names: Wally
+    given-names: Youssef
+
+version: "1.0.0"
+license: MIT
+repository-code: "https://github.com/youssefwally/DJSW_collabrative_coding"
+url: "https://github.com/youssefwally/DJSW_collabrative_coding"
+date-released: "2025-01-01"
+abstract: >
+  DJSW Collaborative Coding Template is a collaborative project template.
+
+preferred-citation:
+  type: software
+  title: "DJSW Collaborative Coding Template"
+  authors:
+    - name: Dennis
+    - name: Johannes
+    - name: Sigurd
+    - family-names: Wally
+      given-names: Youssef
+  year: 2025
+  version: "1.0.0"
+  url: "https://github.com/youssefwally/DJSW_collabrative_coding"
