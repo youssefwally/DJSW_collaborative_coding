@@ -65,17 +65,18 @@ def evaluate_model(args):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # Load test data
-    test_dataset = USPS06Dataset(set_type="test")
-    test_loader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
-    img_dim = test_dataset.get_input_dim()
+    if args.username == "waly":
+        test_dataset = USPS06Dataset(set_type="test")
+        test_loader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
+        img_dim = test_dataset.get_input_dim()
 
     # Load model
     checkpoint = torch.load(model_path, map_location=device)
-    print(checkpoint.keys())
-    model = WMLP(
-        input_dim=img_dim,
-        output_dim=7
-    )
+    if args.username == "waly":
+        model = WMLP(
+            input_dim=img_dim,
+            output_dim=7
+        )
     model.load_state_dict(checkpoint)
     model.to(device)
     model.eval()
