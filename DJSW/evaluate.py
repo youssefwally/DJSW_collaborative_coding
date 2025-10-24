@@ -60,7 +60,7 @@ def balanced_accuracy(y_true, y_pred):
         raise ValueError(f"Error computing balanced accuracy: {str(e)}")
 
 def evaluate_model(args):
-    """Evaluate a WMLP model on test data."""
+    """Evaluate a users model on their test data."""
     model_path = args.load_checkpoint
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
