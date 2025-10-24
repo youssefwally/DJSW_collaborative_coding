@@ -5,7 +5,8 @@ type: software
 
 authors:
   - name: Dennis
-  - name: Johannes
+  - family-names: Mørkrid
+    given-names: Johannes
   - name: Sigurd
   - family-names: Wally
     given-names: Youssef
