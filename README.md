@@ -67,7 +67,7 @@ Efficient Lumi-friendly ML Pipeline
 ## CITATION
 ```bibtex
 @software{DJSW2025,
-  author       = {Dennis and Johannes and Sigurd and Youssef Wally},
+  author       = {Dennis and Johannes Mørkrid and Sigurd and Youssef Wally},
   title        = {DJSW Collaborative Coding Template},
   year         = {2025},
   url          = {https://github.com/youssefwally/DJSW_collabrative_coding},
@@ -116,7 +116,7 @@ Efficient Lumi-friendly ML Pipeline
 
 ### Verify Installation
 ```bash
-python -c "import src; print('Installation successful!')"
+python -c 'import DJSW; print("Installation successful!")'
 ```
 
 ## WMLP Documentation
