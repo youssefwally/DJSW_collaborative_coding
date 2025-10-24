@@ -12,7 +12,7 @@ import configargparse
 import torch
 import numpy as np
 import random
-from eval import eval_model
+from evaluate import evaluate_model
 from train import train_model
 # -----------------------------------------------------
 #Functions
@@ -57,7 +57,7 @@ def main(args):
     else:
         if args.load_checkpoint is None:
             raise ValueError("For evaluation, a model checkpoint must be provided using --load_checkpoint.")
-        eval_model(args)
+        evaluate_model(args)
 # -----------------------------------------------------
 if __name__ == '__main__':
     args = getArguments()

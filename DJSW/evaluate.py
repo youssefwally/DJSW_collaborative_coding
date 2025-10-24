@@ -110,7 +110,3 @@ def evaluate_model(args):
     print(f"MAE: {mae:.4f}")
     print(f"R²: {r2:.4f}")
     print(f"Balanced Accuracy: {bacc:.4f}")
-
-
-def eval_model(args):
-    evaluate_model(args)

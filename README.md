@@ -59,7 +59,7 @@ Efficient Lumi-friendly ML Pipeline
     │
     ├── train.py                <- Code to train models
     │
-    ├── eval.py                 <- Code to evaluate trained models
+    ├── evaluate.py                 <- Code to evaluate trained models
     │
     └── main.py                 <- Main entrance script
 ```
