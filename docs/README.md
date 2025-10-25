@@ -1,12 +1,15 @@
-Generating the docs
-----------
+# Generating the docs
 
-Use [mkdocs](http://www.mkdocs.org/) structure to update the documentation. 
+Use [sphinx](http://www.sphinx-doc.org/) structure to update the documentation. 
+
+Add dependencies:
+
+    pip install -r docs/requirements-docs.txt 
 
 Build locally with:
 
-    mkdocs build
+    sphinx-build docs docs/_build
 
 Serve locally with:
 
-    mkdocs serve
+    sphinx-autobuild --port 8000 docs docs/_build
