@@ -133,7 +133,7 @@ def precision(y_true, y_pred, average="macro"):
             else:
                 precision = np.sum(tps)/(retrieved)
         else:
-            raise ValueError(f"average should be 'macro' or 'micro', {argument} was given")       
+            raise ValueError(f"average should be 'macro' or 'micro', {average} was given")       
         
         assert 0 <= precision <= 1, f"Precision score is invalid: {precision:.4f}"
         
