@@ -12,7 +12,7 @@ import configargparse
 import torch
 import numpy as np
 import random
-from eval import eval_model
+from evaluate import eval_model
 from train import train_model
 # -----------------------------------------------------
 #Functions
