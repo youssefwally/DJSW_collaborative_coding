@@ -10,7 +10,7 @@ def recall(y_true, y_pred, average="macro"):
     """
     Calculate recall for multi-class classification.
         
-    Ratio of relevant retrived instances to number of relevant instances.
+    Ratio of relevant retrieved instances to number of relevant instances.
     
     Args:
         y_true: Ground truth labels (1D array-like)
