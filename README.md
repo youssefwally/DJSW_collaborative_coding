@@ -92,6 +92,35 @@ Efficient Lumi-friendly ML Pipeline
 
 ### Setup Instructions
 
+You can set up this project using either **uv** or **conda**.
+
+#### Using uv 
+
+
+1. **Clone the repository**
+    ```bash
+    git clone git@github.com:<your-username>/DJSW_collaborative_coding.git
+    cd DJSW_collaborative_coding
+    ```
+
+2. **Create and activate a Python virtual environment**
+    ```bash
+    uv venv 3.12
+    source .venv/bin/activate   # (Windows PowerShell: .venv\Scripts\Activate.ps1)
+    ```
+
+3. **Install all dependencies (runtime + dev) and create lockfile**
+    ```bash
+    uv sync --extra dev
+    ```
+
+4. **Install the package in editable (development) mode**
+    ```bash
+    uv pip install -e
+    ```
+
+#### Using conda 
+
 1. **Clone the repository**
     ```bash
     git clone https://github.com/youssefwally/DJSW_collabrative_coding.git
