@@ -114,7 +114,7 @@ You can set up this project using either **uv** or **conda**.
 
 4. **Install the package in editable (development) mode**
     ```bash
-    uv pip install -e
+    uv pip install -e .
     ```
 
 #### Using conda
