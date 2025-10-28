@@ -103,7 +103,7 @@ You can set up this project using either **uv** or **conda**.
 
 2. **Create and activate a Python virtual environment**
     ```bash
-    uv venv 3.12
+    uv venv 
     source .venv/bin/activate   # (Windows PowerShell: .venv\Scripts\Activate.ps1)
     ```
 
