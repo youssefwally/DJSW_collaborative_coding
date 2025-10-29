@@ -20,10 +20,11 @@ jobs:
     - name: Set up micromamba
       uses: mamba-org/setup-micromamba@v1 #uses https://github.com/mamba-org/setup-micromamba
       with:
-        micromamba-version: 'latest' # any version from https://github.com/mamba-org/micromamba-releases
-        environment-file: ''
-        auto-activate-base: true 
-        python-version: '3.12'
+        create-args: >-
+          python=3.12
+          pip
+        environment-name: docs-env
+        micromamba-version: 'latest'
         generate-run-shell: false
 
     - name: Install dependencies
