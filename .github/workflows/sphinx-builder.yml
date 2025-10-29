@@ -23,7 +23,7 @@ jobs:
         create-args: >-
           python=3.12
           pip
-        environment-name: build-env
+        environment-name: docs-env
         micromamba-version: 'latest'
         generate-run-shell: false
 
