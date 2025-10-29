@@ -1,0 +1,45 @@
+name: Build documentation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Set up micromamba
+      uses: mamba-org/setup-micromamba@v1 #uses https://github.com/mamba-org/setup-micromamba
+      with:
+        micromamba-version: 'latest' # any version from https://github.com/mamba-org/micromamba-releases
+        environment-file: ''
+        auto-activate-base: true 
+        python-version: '3.12'
+        generate-run-shell: false
+
+    - name: Install dependencies
+      run: |
+        pip install -r docs/requirements-docs.txt
+          
+    - name: Sphinx build
+      run: |
+        sphinx-build docs docs/_build
+      shell: bash -el {0}
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+      with:
+        publish_branch: gh-pages
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: docs/_build/
+        force_orphan: true
