@@ -110,7 +110,7 @@ def precision(y_true, y_pred, average="macro"):
         # Calculate true positives (tp) and false positives (fp) for each class
         tps = []
         fps = []        
-        for cl in enumerate(classes):
+        for cl in classes:
             tp = np.sum((y_true == cl) & (y_pred == cl))
             fp = np.sum((y_true != cl) & (y_pred == cl))
             tps.append(tp) 
@@ -334,5 +334,5 @@ def evaluate_model(args):
     print(f"Recall: {rec:.4f}")
     print(f"F1: {f1:.4f}")
     
-    def eval_model(args):
-        evaluate_model(args)
+def eval_model(args):
+    evaluate_model(args)
