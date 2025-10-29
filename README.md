@@ -134,7 +134,10 @@ You can set up this project using either **uv** or **conda**.
     ```bash
     pip install -e .
     ```
-
+#### Directly from Github using pip:
+```bash
+    pip install djsw@git+https://github.com/youssefwally/DJSW_collaborative_coding
+```
 ### Verify Installation
 ```bash
 python -c 'import DJSW; print("Installation successful!")'
