@@ -6,8 +6,11 @@ from models.wmlp import WMLP
 from utils.wdataloader import USPS06Dataset
 from models.smlp import SMLP
 from utils.mnist_dataset import MnistH5Dataset
-from torch.utils.data import random_split
+from models.dmlp import DMLP
+from utils.dataset_mnist03_h5 import Mnist03Dataset
 
+from torch.utils.data import random_split
+from pathlib import Path
 
 def train_epoch(model, dataloader, optimizer, criterion, device):
     model.train()
@@ -59,6 +62,8 @@ def train_pipeline(img_dim, train_loader, val_loader, args):
         # Reduced MNIST digits 4..9 -> remap to 0..5 in the dataset creation step
         # img_dim is passed in (should be 28*28)
         model = SMLP(input_size=img_dim, hidden_size=256, output_size=6).to(device)
+    elif args.username == "dennis":
+        model = DMLP(input_dim=img_dim, output_dim=4, hidden_dim=300, negative_slope=0.01).to(device)
     
     # Loss and optimizer
     criterion = nn.CrossEntropyLoss()
@@ -92,6 +97,13 @@ def train_model(args):
         train_size = len(full_ds) - val_size
         train_dataset, val_dataset = random_split(full_ds, [train_size, val_size])
         img_dim = 28 * 28
+    elif args.username == "dennis":
+        ROOT = Path(__file__).resolve().parents[1]
+        H5_DIR = ROOT / "data" / "processed"
+        H5_DIR.mkdir(parents=True, exist_ok=True)
+        train_dataset = Mnist03Dataset(h5_path=H5_DIR / "mnist03.h5", split="train")
+        val_dataset = Mnist03Dataset(h5_path=H5_DIR / "mnist03.h5", split="val")
+        img_dim = 784
     
     
 
