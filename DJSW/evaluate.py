@@ -295,7 +295,7 @@ def evaluate_model(args):
     elif args.username == "sigurd":
         ROOT = Path(__file__).resolve().parents[1]
         H5_DIR = ROOT / "data" / "processed"
-        H5_PATH = H5_DIR / "mnist_4_9.h5"
+        H5_PATH = H5_DIR / "mnist_test_4_9.h5"
         # remap original labels 4..9 -> 0..5 on-the-fly for evaluation
         test_dataset = MnistH5Dataset(H5_PATH, target_transform=lambda t: int(t) - 4)
         test_loader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
