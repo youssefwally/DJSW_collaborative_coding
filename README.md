@@ -77,12 +77,12 @@ Efficient Lumi-friendly ML Pipeline
 }
 ```
 ## Results
-| Model | Accuracy | Precision | Recall | Balanced Accuracy |
-|-------|----------|-----------|--------|-------------------|
-| WMLP | 0.00 | 0.00 | 0.00 | 0.00 |
-| Model 2 | 0.00 | 0.00 | 0.00 | 0.00 |
-| Model 3 | 0.00 | 0.00 | 0.00 | 0.00 |
-| Model 4 | 0.00 | 0.00 | 0.00 | 0.00 |
+| Model | Accuracy | Precision | Recall | Balanced Accuracy | F1 Score |
+|-------|----------|-----------|--------|-------------------|-----------|
+| WMLP | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
+| DMLP | 0.9916 | 0.9916 | 0.9914 | 0.9914 | 0.9915 |
+| Model 3 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
+| Model 4 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
 
 ## Installation
 
@@ -154,10 +154,10 @@ python -c 'import DJSW; print("Installation successful!")'
 3. made an function that returns the input dim so that it can be passed directly to the model.
 ### Misc
 1. Used CookieCutter to make boilerplate project outlet to follow worldwide code conventions
-2. -Running another persons code section-
-3. --Another persons running my code section--
+2. Everything went smoothly (Dennis)
+3. Everything went smoothly (one typo as error)
 4. Sphinx and LUMI
-5. For such a simple project it was fairly easy to run jobs on LUMI. However, I would predict that for a large project with a rapidly changing environment it will be time consuming. (Job-IDs: 13618444, 13631080)
+5. For such a simple project it was fairly easy to run jobs on LUMI. However, I would predict that for a large project with a rapidly changing environment it will be time consuming. (Job-IDs: 13618444, 13631080, 14077470)
 
 --------
 
