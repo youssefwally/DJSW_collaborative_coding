@@ -61,7 +61,7 @@ def train_pipeline(img_dim, train_loader, val_loader, args):
     elif args.username == "sigurd":
         # Reduced MNIST digits 4..9 -> remap to 0..5 in the dataset creation step
         # img_dim is passed in (should be 28*28)
-        model = SMLP(input_size=img_dim, hidden_size=256, output_size=6).to(device)
+        model = SMLP(input_size=img_dim, hidden_size=77, output_size=6).to(device)
     elif args.username == "dennis":
         model = DMLP(input_dim=img_dim, output_dim=4, hidden_dim=300, negative_slope=0.01).to(device)
     

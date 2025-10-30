@@ -4,9 +4,11 @@ from pathlib import Path
 import torch
 from models.wmlp import WMLP
 from models.dmlp import DMLP
+from models.smlp import SMLP
 from torch.utils.data import DataLoader
 from utils.wdataloader import USPS06Dataset
 from utils.dataset_mnist03_h5 import Mnist03Dataset
+from utils.mnist_dataset import MnistH5Dataset
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 
 def recall(y_true, y_pred, average="macro"):
@@ -290,6 +292,14 @@ def evaluate_model(args):
         test_dataset = Mnist03Dataset(h5_path= H5_DIR / "mnist03.h5", split="test")
         test_loader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
         img_dim = 784
+    elif args.username == "sigurd":
+        ROOT = Path(__file__).resolve().parents[1]
+        H5_DIR = ROOT / "data" / "processed"
+        H5_PATH = H5_DIR / "mnist_4_9.h5"
+        # remap original labels 4..9 -> 0..5 on-the-fly for evaluation
+        test_dataset = MnistH5Dataset(H5_PATH, target_transform=lambda t: int(t) - 4)
+        test_loader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
+        img_dim = 28 * 28
 
     # Load model
     checkpoint = torch.load(model_path, map_location=device)
@@ -305,6 +315,8 @@ def evaluate_model(args):
             hidden_dim=300,
             negative_slope=0.01
         )
+    elif args.username == "sigurd":
+        model = SMLP(input_size=img_dim, hidden_size=77, output_size=6)
 
     model.load_state_dict(checkpoint)
     model.to(device)
@@ -318,7 +330,10 @@ def evaluate_model(args):
         for batch in test_loader:
             inputs, labels = batch
             inputs, labels = inputs.to(device), labels.to(device)
-            
+            # If inputs have spatial dims (1,28,28), flatten to (B, C*H*W) for MLPs
+            if inputs.dim() > 2:
+                inputs = inputs.view(inputs.size(0), -1)
+
             outputs = model(inputs)
             logits.extend(outputs.cpu().numpy())
             targets.extend(labels.cpu().numpy())
