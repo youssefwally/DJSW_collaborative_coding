@@ -1,0 +1,23 @@
+Training samples: 31722
+Validation samples: 3524
+Image dimensions: 784
+Epoch 1/10
+Train Loss: 0.3315, Val Loss: 0.1789
+Epoch 2/10
+Train Loss: 0.1334, Val Loss: 0.1197
+Epoch 3/10
+Train Loss: 0.0965, Val Loss: 0.0910
+Epoch 4/10
+Train Loss: 0.0705, Val Loss: 0.0784
+Epoch 5/10
+Train Loss: 0.0542, Val Loss: 0.0764
+Epoch 6/10
+Train Loss: 0.0444, Val Loss: 0.0755
+Epoch 7/10
+Train Loss: 0.0357, Val Loss: 0.0801
+Epoch 8/10
+Train Loss: 0.0264, Val Loss: 0.0816
+Epoch 9/10
+Train Loss: 0.0233, Val Loss: 0.0664
+Epoch 10/10
+Train Loss: 0.0199, Val Loss: 0.0783
