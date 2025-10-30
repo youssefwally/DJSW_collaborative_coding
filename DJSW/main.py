@@ -22,34 +22,34 @@ def getArguments():
     parser = configargparse.ArgumentParser(description='Training and Evaluation Script', add_help=True)
 
     # User setting
-    parser.add_argument('--username', default=None, type=str, required=True, 
+    parser.add_argument('--username', default=None, type=str, required=True,
                         choices=["dennis", "johannes", "sigurd", "waly"], help = "Select a User.")
 
     # Output settings
-    parser.add_argument('--exp_name', default=None, type=str, required=True, 
+    parser.add_argument('--exp_name', default=None, type=str, required=True,
                         help="Name of the experiment.")
     parser.add_argument('--output_dir', default=None, type=str, required=True,
                         help = "Path for output files (relative to working directory).")
-    
+
     # General settings
-    parser.add_argument('--seed', default=42, type=int, 
+    parser.add_argument('--seed', default=42, type=int,
                         help="Set seed for deterministic training.")
     parser.add_argument('--train', action='store_true',
                         help = "If the model should be trained, otherwise evaluated.")
-    parser.add_argument('--load_checkpoint', default=None, type=str, 
+    parser.add_argument('--load_checkpoint', default=None, type=str,
                         help = "Path to model checkpoint (weights, optimizer, epoch).")
-                        
+
     # General training hyperparameters
-    parser.add_argument('--num_epochs', default=10, type=int, 
+    parser.add_argument('--num_epochs', default=10, type=int,
                         help="Number of training epochs.")
-    parser.add_argument('--batch_size', default=64, type=int, 
+    parser.add_argument('--batch_size', default=64, type=int,
                         help="Training batch size.")
-    parser.add_argument('--lr', default=1e-3, type=float, 
+    parser.add_argument('--lr', default=1e-3, type=float,
                         help="Training learning rate.")
-    
+
     args = parser.parse_args()
 
-    return args 
+    return args
 # -----------------------------------------------------
 def main(args):
     if args.train:
