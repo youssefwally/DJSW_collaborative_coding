@@ -1,16 +1,19 @@
 import numpy as np
+from pathlib import Path
 
 import torch
 from models.wmlp import WMLP
+from models.dmlp import DMLP
 from torch.utils.data import DataLoader
 from utils.wdataloader import USPS06Dataset
+from utils.dataset_mnist03_h5 import Mnist03Dataset
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 
 def recall(y_true, y_pred, average="macro"):
     """
     Calculate recall for multi-class classification.
         
-    Ratio of relevant retrived instances to number of relevant instances.
+    Ratio of relevant retrieved instances to number of relevant instances.
     
     Args:
         y_true: Ground truth labels (1D array-like)
@@ -280,6 +283,13 @@ def evaluate_model(args):
         test_dataset = USPS06Dataset(set_type="test")
         test_loader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
         img_dim = test_dataset.get_input_dim()
+    elif args.username == "dennis":
+        ROOT = Path(__file__).resolve().parents[1]
+        H5_DIR = ROOT / "data" / "processed"
+        H5_DIR.mkdir(parents=True, exist_ok=True)
+        test_dataset = Mnist03Dataset(h5_path= H5_DIR / "mnist03.h5", split="test")
+        test_loader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
+        img_dim = 784
 
     # Load model
     checkpoint = torch.load(model_path, map_location=device)
@@ -288,6 +298,14 @@ def evaluate_model(args):
             input_dim=img_dim,
             output_dim=7
         )
+    elif args.username == "dennis":
+        model = DMLP(
+            input_dim=img_dim,
+            output_dim=4,
+            hidden_dim=300,
+            negative_slope=0.01
+        )
+
     model.load_state_dict(checkpoint)
     model.to(device)
     model.eval()
