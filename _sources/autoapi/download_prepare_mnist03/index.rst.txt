@@ -1,0 +1,56 @@
+download_prepare_mnist03
+========================
+
+.. py:module:: download_prepare_mnist03
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   download_prepare_mnist03.ROOT
+   download_prepare_mnist03.DOWNLOAD_DIR
+   download_prepare_mnist03.NPZ_DIR
+   download_prepare_mnist03.orig
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   download_prepare_mnist03.load_idx_images
+   download_prepare_mnist03.load_idx_labels
+   download_prepare_mnist03.save_to_npz
+   download_prepare_mnist03.save_to_h5
+   download_prepare_mnist03.main
+
+
+Module Contents
+---------------
+
+.. py:data:: ROOT
+
+.. py:data:: DOWNLOAD_DIR
+
+.. py:data:: NPZ_DIR
+
+.. py:data:: orig
+
+.. py:function:: load_idx_images(path: pathlib.Path)
+
+   Load MNIST image file (idx3 format) from .gz
+
+
+.. py:function:: load_idx_labels(path: pathlib.Path)
+
+   Load MNIST label file (idx1 format) from .gz
+
+
+.. py:function:: save_to_npz(npz_path, data)
+
+.. py:function:: save_to_h5(h5_path, data)
+
+.. py:function:: main(npz=False, h5=True)
+

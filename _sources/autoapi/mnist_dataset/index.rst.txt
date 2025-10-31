@@ -1,0 +1,64 @@
+mnist_dataset
+=============
+
+.. py:module:: mnist_dataset
+
+.. autoapi-nested-parse::
+
+   HDF5-backed MNIST Dataset for PyTorch.
+
+   This implements a lightweight dataset that lazily opens an HDF5 file and
+   returns (image_tensor, label) pairs. Images are returned as uint8 tensors
+   scaled to [0,1] if a transform isn't provided.
+
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   mnist_dataset.MnistH5Dataset
+
+
+Module Contents
+---------------
+
+.. py:class:: MnistH5Dataset(h5_path: str | pathlib.Path, transform: Optional[Callable] = None, target_transform: Optional[Callable] = None)
+
+   Bases: :py:obj:`torch.utils.data.Dataset`
+
+
+   .. py:attribute:: h5_path
+
+
+   .. py:attribute:: transform
+      :value: None
+
+
+
+   .. py:attribute:: target_transform
+      :value: None
+
+
+
+   .. py:attribute:: _h5
+      :value: None
+
+
+
+   .. py:method:: _ensure_open()
+
+
+   .. py:method:: __len__()
+
+
+   .. py:method:: __getitem__(idx)
+
+
+   .. py:method:: close()
+
+
+   .. py:method:: __del__()
+
+

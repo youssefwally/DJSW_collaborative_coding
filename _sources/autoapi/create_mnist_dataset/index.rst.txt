@@ -1,0 +1,41 @@
+create_mnist_dataset
+====================
+
+.. py:module:: create_mnist_dataset
+
+.. autoapi-nested-parse::
+
+   Download MNIST and store as HDF5.
+
+   Creates a dataset file at data/processed/mnist.h5 with two datasets:
+    - images: uint8, shape (N, 28, 28)
+    - labels: uint8, shape (N,)
+
+   Provides function create_mnist_h5(output_path, train=True, download=True)
+   and a simple CLI.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   create_mnist_dataset.parser
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   create_mnist_dataset.create_mnist_h5
+
+
+Module Contents
+---------------
+
+.. py:function:: create_mnist_h5(output_path: str | pathlib.Path = 'data/processed/mnist.h5', train: bool = True, download: bool = True, labels_to_keep: list[int] | None = None)
+
+.. py:data:: parser
+

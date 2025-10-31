@@ -1,0 +1,55 @@
+smlp
+====
+
+.. py:module:: smlp
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   smlp.SMLP
+
+
+Module Contents
+---------------
+
+.. py:class:: SMLP(input_size=784, hidden_size=77, output_size=6)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Simple Multi-Layer Perceptron with 3 hidden layers (77 neurons each).
+
+   Args:
+       input_size (int): Dimension of input features (s)
+       hidden_size (int): Number of neurons in each hidden layer (default: 77)
+       output_size (int): Dimension of output (default: 6)
+
+
+   .. py:attribute:: layer1
+
+
+   .. py:attribute:: layer2
+
+
+   .. py:attribute:: layer3
+
+
+   .. py:attribute:: layer4
+
+
+   .. py:attribute:: relu
+
+
+   .. py:method:: forward(x)
+
+      Forward pass through the network.
+      Args:
+          x (torch.Tensor): Input tensor of shape (batch_size, input_size)
+      Returns:
+          torch.Tensor: Output tensor of shape (batch_size, output_size)
+
+
+

@@ -1,0 +1,123 @@
+DJSW.evaluate
+=============
+
+.. py:module:: DJSW.evaluate
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   DJSW.evaluate.recall
+   DJSW.evaluate.precision
+   DJSW.evaluate.accuracy
+   DJSW.evaluate.balanced_accuracy
+   DJSW.evaluate.f1_score
+   DJSW.evaluate.evaluate_model
+   DJSW.evaluate.eval_model
+
+
+Module Contents
+---------------
+
+.. py:function:: recall(y_true, y_pred, average='macro')
+
+   Calculate recall for multi-class classification.
+       
+   Ratio of relevant retrieved instances to number of relevant instances.
+
+   Args:
+       y_true: Ground truth labels (1D array-like)
+       y_pred: Predicted labels (1D array-like)
+       average: Averaging mode, macro or micro (str)
+       
+   Returns:
+       float: Recall score between 0 and 1
+       
+   Raises:
+       AssertionError: If inputs are invalid
+       ValueError: If computation fails
+
+
+.. py:function:: precision(y_true, y_pred, average='macro')
+
+   Calculate precision for multi-class classification
+       
+   Ratio of relevant retrieved instances to number of retrieved instances
+
+   Args:
+       y_true: Ground truth labels (1D array-like)
+       y_pred: Predicted labels (1D array-like)
+       average: Averaging mode, macro or micro (str)
+       
+   Returns:
+       float: Accuracy score between 0 and 1
+       
+   Raises:
+       AssertionError: If inputs are invalid
+       ValueError: If computation fails
+
+
+.. py:function:: accuracy(y_true, y_pred)
+
+   Calculate accuracy for multi-class classification
+       
+   Ratio of correct classifications to number of classifications
+
+   Args:
+       y_true: Ground truth labels (1D array-like)
+       y_pred: Predicted labels (1D array-like)
+       
+   Returns:
+       float: Accuracy score between 0 and 1
+       
+   Raises:
+       AssertionError: If inputs are invalid
+       ValueError: If computation fails
+
+
+.. py:function:: balanced_accuracy(y_true, y_pred)
+
+   Calculate balanced accuracy for multi-class classification.
+
+   Balanced accuracy is the average of recall obtained on each class.
+   It's particularly useful for imbalanced datasets.
+
+   Args:
+       y_true: Ground truth labels (1D array-like)
+       y_pred: Predicted labels (1D array-like)
+
+   Returns:
+       float: Balanced accuracy score between 0 and 1
+
+   Raises:
+       AssertionError: If inputs are invalid
+       ValueError: If computation fails
+
+
+.. py:function:: f1_score(y_true, y_pred)
+
+   Calculate f1 for multi-class classification.
+       
+   Combines precision and recall using the harmonic mean
+
+   Args:
+       y_true: Ground truth labels (1D array-like)
+       y_pred: Predicted labels (1D array-like)
+       
+   Returns:
+       float: F1 score between 0 and 1
+       
+   Raises:
+       AssertionError: If inputs are invalid
+       ValueError: If computation fails
+
+
+.. py:function:: evaluate_model(args)
+
+   Evaluate a users model on their test data.
+
+
+.. py:function:: eval_model(args)
+

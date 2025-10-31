@@ -1,0 +1,19 @@
+test_data
+=========
+
+.. py:module:: test_data
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   test_data.test_code_is_tested
+
+
+Module Contents
+---------------
+
+.. py:function:: test_code_is_tested()
+

@@ -1,0 +1,17 @@
+DJSW
+====
+
+.. py:module:: DJSW
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/DJSW/evaluate/index
+   /autoapi/DJSW/main/index
+   /autoapi/DJSW/train/index
+
+

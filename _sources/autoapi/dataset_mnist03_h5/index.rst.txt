@@ -1,0 +1,74 @@
+dataset_mnist03_h5
+==================
+
+.. py:module:: dataset_mnist03_h5
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   dataset_mnist03_h5.Mnist03Dataset
+
+
+Module Contents
+---------------
+
+.. py:class:: Mnist03Dataset(h5_path, split='train', normalize=True, flatten=True)
+
+   MNIST03 dataset stored in an HDF5 file:
+     /<split>/images : uint8 [N, 28, 28]
+     /<split>/labels : int64 [N]
+
+
+   .. py:attribute:: h5_path
+      :value: ''
+
+
+
+   .. py:attribute:: split
+      :value: 'train'
+
+
+
+   .. py:attribute:: normalize
+      :value: True
+
+
+
+   .. py:attribute:: flatten
+      :value: True
+
+
+
+   .. py:attribute:: _file
+      :value: None
+
+
+
+   .. py:attribute:: _pid
+      :value: None
+
+
+
+   .. py:attribute:: _length
+      :value: None
+
+
+
+   .. py:method:: _ensure_open()
+
+      Open the HDF5 file in this process if needed (one handle per process).
+
+
+
+   .. py:method:: __len__()
+
+
+   .. py:method:: __getitem__(idx)
+
+
+   .. py:method:: __del__()
+
+
