@@ -4,7 +4,6 @@ import torch
 from utils.dataset_mnist03_h5 import Mnist03Dataset
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
-print(ROOT_DIR)
 DATA_DIR = ROOT_DIR / "data" / "processed"
 
 def test_d_data_available():
