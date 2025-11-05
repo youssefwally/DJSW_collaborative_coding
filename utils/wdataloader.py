@@ -8,7 +8,7 @@ class USPS06Dataset(Dataset):
     """
     Dataset class for filtered USPS data (digits 0-6) stored in H5 file.
     """
-    def __init__(self, h5_file='../data/raw/usps.h5', set_type="train", transform=None):
+    def __init__(self, h5_file='./data/raw/usps.h5', set_type="train", transform=None):
         """
         Args:
             h5_file: Path to the H5 file containing the data
@@ -39,7 +39,7 @@ class USPS06Dataset(Dataset):
             test_labels = test_y[mask]
 
         # Save filtered data back to new H5 file
-        with h5py.File('../data/processed/usps.h5', 'w') as new_file:
+        with h5py.File('./data/processed/usps.h5', 'w') as new_file:
             new_file.create_dataset('train_data', data=train_data)
             new_file.create_dataset('train_labels', data=train_labels)
             new_file.create_dataset('val_data', data=val_data)
