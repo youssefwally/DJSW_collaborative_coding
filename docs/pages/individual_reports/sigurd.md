@@ -16,7 +16,7 @@ Design summary:
 
 - Architecture: input layer -> 4 hidden layers (each 77 units, ReLU) -> output layer. Input size is 28*28=784 (flattened MNIST), output size equals number of classes (6 for digits 4–9).
 - Forward pass: flatten input; pass through dense layers with ReLU; final linear layer returns logits (no softmax).
-- Loss & optimizer: CrossEntropyLoss + Adam. These are standard choices for small MLP experiments.
+- Loss & optimizer: CrossEntropyLoss + Adam. These are standard choices for all the MLP experiments.
 
 
 ## MNIST dataset & HDF5 writer (in-depth)
@@ -55,7 +55,6 @@ This section documents the primary functions/classes and CLI flags so teammates 
 			- `target_transform`: optional transform applied to the label (used to remap 4..9 -> 0..5 for SMLP).
 		- `__len__()`: returns number of samples (reads labels shape lazily).
 		- `__getitem__`(idx): returns (img_tensor, label). Image is a float tensor in [0,1] with shape (C,H,W).
-			```
 
 - models/smlp.py
 	- class `SMLP`(nn.Module)
@@ -65,7 +64,7 @@ This section documents the primary functions/classes and CLI flags so teammates 
 			- `output_size`: number of classes (6 for digits 4..9 remapped to 0..5)
 		- `forward(x)`: expects x shaped (B, input_size) and returns logits (B, output_size)
 
-- DJSW/main.py (runner flags)
+- DJSW/main.py
 	- Important CLI flags:
 		- `--username` <username> (required) : selects the user's pipeline (`sigurd`, `waly`, `dennis`).
 		- `--exp_name` <name> (required) : experiment name used in checkpoints.
@@ -94,20 +93,17 @@ Approach and implementation:
 
 - The evaluation code computes a variety of metrics: accuracy, precision, recall, F1, balanced accuracy, MSE/RMSE/MAE/R² when appropriate. These functions take inn the output predictions and labels, and output the respective measurement.  
 
-## Challenges
+## Running someone else's code
 
-Running someone else's code — easy/difficult
+The shared infrastructure (`DJSW/main.py`) and agreed wrapper structure for models/datasets simplified made running both my own and other models a breeze. Running on LUMI took a bit of time to set up, but it was mostly due to going through the course on windows and then switching to mac for the home exam.
 
-- Easy: the shared runner (`DJSW/main.py`) and agreed wrapper structure for models/datasets simplified locating entrypoints.
-- Difficult: hard-coded paths and inconsistent filename choices required tracing and small fixes; checkpoint formats sometimes wrapped additional metadata which needed robust loading logic.
+I also spent a bit of time debugging why pointing to folders in a certain way worked for other people and not for me, where I found that while someone starting the path with "../" worked for them, but I had to change it to "./" to make it work for me. 
 
-Someone else running my code — easy/difficult
+## Someone else running my code
+No one has ran my code yet so it is difficult to say, but I assume it will be as easy for them as it was for me. 
 
-- Easy: using a single command runner and adding example commands in docs helped others reproduce experiments.
-- Difficult: environment mismatches (torch/torchvision/h5py versions) caused failures for some teammates; I documented the `requirements.txt` and suggested using the provided virtualenv instructions.
-
-What could have been done differently. 
-- We've run the code on LUMI using the `run.sh` file, adapting it for each run. Using only a single file reduces clutter, but keeping a seperate one for each LUMI run might have allowed more reproducibility.  
+What might have been done differently. 
+- We've run the code on LUMI using the `run.sh` file, adapting it for each run. Using only a single file reduces clutter, but keeping a separate one for each LUMI run might have allowed more reproducibility.  
 
 ## Tools used
 
@@ -115,10 +111,12 @@ What could have been done differently.
 - h5py / HDF5 — dataset storage.
 - Sphinx — documentation generation.
 - PyTest — small unit tests for loader/writer.
-- uv — While only used locally for prototyping, the course introduced me to uv as an alternative to conda. Much appreciated. 
+- uv — While only used locally for prototyping, the course introduced me to uv as an alternative to conda. It is great! Much appreciated. 
 
 ## LUMI experience (job evidence)
+Running on LUMI was an interesting experience. I learned a lot from it, not just LUMI specific stuff, but also got more comfortable with the linux terminal, which is also really nice. 
 
+The following files are the job-files produced from training and evaluating on LUMI: 
 - Job slurm-14079744.out — 10 epoch training run. Checkpoint saved to `weights/SMLP/`.
 - Job slurm-14362915.out - Evaluation run on WMLP.
 
