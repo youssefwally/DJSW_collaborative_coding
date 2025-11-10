@@ -68,7 +68,7 @@ This section documents the primary functions/classes and CLI flags so teammates 
 	- Important CLI flags:
 		- `--username` <username> (required) : selects the user's pipeline (`sigurd`, `waly`, `dennis`).
 		- `--exp_name` <name> (required) : experiment name used in checkpoints.
-		- --`output_dir` <path> (required) : directory for outputs and checkpoints (must exist).
+		- `--output_dir` <path> (required) : directory for outputs and checkpoints (must exist).
 		- `--train` (flag) : run training when present; otherwise evaluation (requires --load_checkpoint).
 		- `--load_checkpoint` <path> : checkpoint path for evaluation.
 		- `--num_epochs`, `--batch_size`, `--lr` : training hyperparameters.
