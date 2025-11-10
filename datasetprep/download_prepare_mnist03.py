@@ -21,7 +21,16 @@ orig = {
 }
 
 def load_idx_images(path: Path):
-    """Load MNIST image file (idx3 format) from .gz"""
+    """
+        Load MNIST image file (idx3 format) from .gz
+
+    Args:
+        path: path to raw image data gzip file
+
+    Returns:
+        image data as numpy array (n_images, n_rows, n_cols)
+
+    """
     with gzip.open(path, "rb") as f:
         _, n_images, n_rows, n_cols = struct.unpack(">IIII", f.read(16))
         # > means big-endian, I = 4-byte unsigned int
@@ -30,25 +39,51 @@ def load_idx_images(path: Path):
 
 
 def load_idx_labels(path: Path):
-    """Load MNIST label file (idx1 format) from .gz"""
+    """
+    Load MNIST label file (idx1 format) from .gz
+
+    Args:
+        path: path to raw label data gzip file
+
+    Returns: labels as numpy array (n_labels,)
+
+    """
     with gzip.open(path, "rb") as f:
         f.read(8)
         data = np.frombuffer(f.read(), dtype=np.uint8)
         return data
 
 def save_to_npz(npz_path, data):
+    """
+    Save the image data and labels with splits "train" and "test" in npz file
+    Args:
+        npz_path: Path
+            output path
+
+        data: dict
+            data dict with entries X_train, y_train, X_val, y_val, X_test, y_test
+    """
     np.savez_compressed(
         npz_path,
         X_train=data["X_train"],
         y_train=data["y_train"],
-        X_val=["X_val"],
-        y_val=["y_val"],
-        X_test=["X_test"],
-        y_test=["y_test"],
+        X_val=data["X_val"],
+        y_val=data["y_val"],
+        X_test=data["X_test"],
+        y_test=data["y_test"]
     )
     print(f"mnist03 data saved under {npz_path}.")
 
 def save_to_h5(h5_path, data):
+    """
+    Save the image data and labels with splits "train", "val" and "test" in h5 file
+    Args:
+        h5_path:
+            output path
+
+        data: dict
+            data dict with entries X_train, y_train, X_val, y_val, X_test, y_test
+    """
     h5_path = Path(h5_path)
     # Choose chunk size roughly like your batch size
     chunk = (32, 28, 28)  # (N, H, W)
@@ -79,6 +114,15 @@ def save_to_h5(h5_path, data):
     print(f"mnist03 data saved under {h5_path}.")
 
 def main(npz=False, h5=True):
+    """
+    Open raw MNIST train and test image data and labels, create val split from train data and save as npz and or h5
+    Args:
+        npz: bool
+            If True, save data and labels as npz file
+        h5: bool
+            If True, save data and labels as h5 file
+    """
+
     for _, value in orig.items():
         urllib.request.urlretrieve("https://storage.googleapis.com/cvdf-datasets/mnist/" + value, DOWNLOAD_DIR / value)
     print("MNIST original data download completed.")

@@ -27,6 +27,11 @@ dependencies = [
     "numpy>=2.3.4",
     "pytest>=8.4.2",
     "ruff>=0.14.2",
+    "myst-parser>=4.0.1",
+    "sphinx>=8.2.3",
+    "sphinx-rtd-theme>=3.0.2",
+    "sphinx-autoapi>=3.6.1",
+    "sphinx-autobuild>=2025.8.25",
 ]
 
 [project.optional-dependencies]
