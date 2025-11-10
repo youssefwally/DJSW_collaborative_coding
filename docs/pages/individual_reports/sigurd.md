@@ -18,10 +18,6 @@ Design summary:
 - Forward pass: flatten input; pass through dense layers with ReLU; final linear layer returns logits (no softmax).
 - Loss & optimizer: CrossEntropyLoss + Adam. These are standard choices for small MLP experiments.
 
-Practical notes:
-
-- The model expects flattened inputs. The training pipeline explicitly flattens tensors before forwarding them to the model to support both MLP and image-based models in the repo.
-- Output logits are used with CrossEntropyLoss (the loss expects class indices, not one-hot vectors).
 
 ## MNIST dataset & HDF5 writer (in-depth)
 
@@ -30,13 +26,13 @@ Files: `datasetprep/create_mnist_dataset.py`, `utils/mnist_dataset.py` (`MnistH5
 What the writer does:
 
 - Downloads MNIST using `torchvision.datasets.MNIST` into `data/raw/mnist/`.
-- Writes two datasets into an HDF5 file: `images` (uint8, shape (N,28,28)) and `labels` (uint8, shape (N,)). Compression via gzip is used.
+- Writes two datasets into an HDF5 file: `images` (shape (N,28,28)) and `labels` (shape (N,)).
 - Using the `labels_to_keep` argument you can create reduced HDF5 subset of MNIST containing only images with specific labels.
 
 What the dataset loader does:
 
-- `MnistH5Dataset` lazily opens the HDF5 file (one handle per worker) and returns (image_tensor, label). Images are converted to float tensors in [0,1].
-- `target_transform` is supported — the codebase uses `lambda t: int(t)-4` so labels 4..9 map to 0..5 during training/evaluation without altering the stored files.
+- `MnistH5Dataset` opens the HDF5 file and returns (image_tensor, label). Images are converted to float tensors in [0,1].
+- `target_transform` is supported — the codebase uses `lambda t: int(t)-4` so labels 4-9 map to 0-5 during training/evaluation without altering the stored files.
 
 
 ## Script & function reference
@@ -44,7 +40,7 @@ What the dataset loader does:
 This section documents the primary functions/classes and CLI flags so teammates can quickly reuse them.
 
 - datasetprep/create_mnist_dataset.py
-	- create_mnist_h5(output_path: str | Path = "data/processed/mnist.h5", train: bool = True, download: bool = True, labels_to_keep: list[int] | None = None) -> Path
+	- `create_mnist_h5`(output_path: str | Path = "data/processed/mnist.h5", train: bool = True, download: bool = True, labels_to_keep: list[int] | None = None) -> Path
 		- `output_path`: path to write the .h5 file (parent dir is created if missing).
 		- `train`: True -> download/write the training split; False -> write the test split.
 		- `download`: allow torchvision to download MNIST if missing.
@@ -52,18 +48,18 @@ This section documents the primary functions/classes and CLI flags so teammates 
 		- Returns the Path to the written HDF5 file.
 		
 - utils/mnist_dataset.py
-	- class MnistH5Dataset(torch.utils.data.Dataset)
-		- __init__(h5_path: str | Path, transform: Optional[Callable] = None, target_transform: Optional[Callable] = None)
-			- h5_path: path to an HDF5 file containing `images` and `labels` datasets.
-			- transform: optional transform applied to the image tensor (after scaling to [0,1]).
-			- target_transform: optional transform applied to the label (used to remap 4..9 -> 0..5 for SMLP).
-		- __len__(): returns number of samples (reads labels shape lazily).
-		- __getitem__(idx): returns (img_tensor, label). Image is a float tensor in [0,1] with shape (C,H,W).
+	- class `MnistH5Dataset`(torch.utils.data.Dataset)
+		- `__init__`(h5_path: str | Path, transform: Optional[Callable] = None, target_transform: Optional[Callable] = None)
+			- `h5_path`: path to an HDF5 file containing `images` and `labels` datasets.
+			- `transform`: optional transform applied to the image tensor (after scaling to [0,1]).
+			- `target_transform`: optional transform applied to the label (used to remap 4..9 -> 0..5 for SMLP).
+		- `__len__()`: returns number of samples (reads labels shape lazily).
+		- `__getitem__`(idx): returns (img_tensor, label). Image is a float tensor in [0,1] with shape (C,H,W).
 			```
 
 - models/smlp.py
-	- class SMLP(nn.Module)
-		- __init__(input_size=784, hidden_size=77, output_size=6)
+	- class `SMLP`(nn.Module)
+		- `__init__`(input_size=784, hidden_size=77, output_size=6)
 			- `input_size`: flattened image dimensionality (28*28=784)
 			- `hidden_size`: number of neurons per hidden layer (77 used in the project)
 			- `output_size`: number of classes (6 for digits 4..9 remapped to 0..5)
@@ -79,24 +75,24 @@ This section documents the primary functions/classes and CLI flags so teammates 
 		- `--num_epochs`, `--batch_size`, `--lr` : training hyperparameters.
 
 - DJSW/train.py
-	- train_model(args): when args.username == 'sigurd' the pipeline:
+	- `train_model`(args): when `args.username` == 'sigurd' the pipeline:
 		1. Loads `data/processed/mnist_4_9.h5` with MnistH5Dataset(target_transform=lambda t: int(t)-4).
 		2. Splits into train/val (90/10) via random_split.
-		3. Creates DataLoaders and calls `train_pipeline` which flattens inputs and runs epochs. Checkpoints saved to `{args.output_dir}/{args.exp_name}_checkpoint_epoch_{N}.pt`.
+		3. Creates DataLoaders and calls `train_pipeline` which flattens inputs and runs epochs training the model.
+		4. Checkpoints saved to args dependent directory: `{args.output_dir}/{args.exp_name}_checkpoint_epoch_{N}.pt`.
 
 - DJSW/evaluate.py 
-	- evaluate_model(args): requires args.load_checkpoint; when args.username == 'sigurd' it:
+	- `evaluate_model`(args): requires args.load_checkpoint; when `args.username` == 'sigurd' it:
 		1. Loads `data/processed/mnist_4_9.h5` via MnistH5Dataset with the same target_transform used in training.
 		2. Loads the checkpoint with `torch.load(...)` and `model.load_state_dict(...)` (if checkpoint wraps the state dict, use the robust snippet in the appendix).
-		3. Flattens inputs before forward and computes metrics (accuracy, precision, recall, F1, balanced accuracy, etc.).
-
-If you'd like, I can add a short subsection showing the exact checkpoint filename pattern and a robust loading example inside `evaluate.py` so teammates avoid load errors.
+		3. Flattens inputs before inference on test set.
+  		4. Computes metrics (accuracy, precision, recall, F1, balanced accuracy, etc.).
 
 ## Accuracy & metrics (in-depth)
 
 Approach and implementation:
 
-- The evaluation code computes a variety of metrics: accuracy, precision, recall, F1, balanced accuracy, MSE/RMSE/MAE/R² when appropriate. These functions take inn the predictions and labels, and output the respective measurement.  
+- The evaluation code computes a variety of metrics: accuracy, precision, recall, F1, balanced accuracy, MSE/RMSE/MAE/R² when appropriate. These functions take inn the output predictions and labels, and output the respective measurement.  
 
 ## Challenges
 
@@ -117,7 +113,6 @@ What could have been done differently.
 
 - PyTorch + torchvision — downloading the dataset and base functions for the MLP.
 - h5py / HDF5 — dataset storage.
-- Slurm — job submission and containerized runs on LUMI.
 - Sphinx — documentation generation.
 - PyTest — small unit tests for loader/writer.
 - uv — While only used locally for prototyping, the course introduced me to uv as an alternative to conda. Much appreciated. 
@@ -131,6 +126,6 @@ What could have been done differently.
 
 - `data/processed/mnist_4_9.h5` (training HDF5)
 - `data/processed/mnist_test_9_5.h5` (test HDF5)
-- `weights/SMLP/` — example checkpoints (saved during training)
+- `weights/SMLP/` — saved model checkpoint from training
 - `reports/` — Slurm logs and run artifacts
 
