@@ -120,7 +120,7 @@ What could have been done differently.
 - Slurm — job submission and containerized runs on LUMI.
 - Sphinx — documentation generation.
 - PyTest — small unit tests for loader/writer.
-- uv - While only used locally for prototyping, the course introduced me to uv as an alternative to conda. Much appreciated. 
+- uv — While only used locally for prototyping, the course introduced me to uv as an alternative to conda. Much appreciated. 
 
 ## LUMI experience (job evidence)
 
