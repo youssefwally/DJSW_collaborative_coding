@@ -98,8 +98,16 @@ if __name__ == "__main__":
     parser.add_argument("--output", "-o", default="data/processed/mnist.h5", help="Output HDF5 path")
     parser.add_argument("--train", action="store_true", help="Download train split (default)")
     parser.add_argument("--test", dest="train", action="store_false", help="Download test split")
+    parser.add_argument("--keep", "--labels-to-keep", dest="labels_to_keep", default=None,
+                        help="Comma-separated list of integer labels to keep (e.g. 4,5,6,7,8,9)."
+                        )
     parser.set_defaults(train=True)
     args = parser.parse_args()
+    # Parse comma-separated labels list into a Python list of ints if provided
+    if args.labels_to_keep is None:
+        labels_to_keep = None
+    else:
+        labels_to_keep = [int(x) for x in args.labels_to_keep.split(",") if x.strip() != ""]
 
-    p = create_mnist_h5(args.output, train=args.train)
+    p = create_mnist_h5(args.output, train=args.train, labels_to_keep=labels_to_keep)
     print(f"Created {p}")
