@@ -7,13 +7,20 @@ import torch.nn as nn
 #Class
 
 class SMLP(nn.Module):
-    """
-    Simple Multi-Layer Perceptron with 3 hidden layers (77 neurons each).
-    
-    Args:
-        input_size (int): Dimension of input features (s)
-        hidden_size (int): Number of neurons in each hidden layer (default: 77)
-        output_size (int): Dimension of output (default: 6)
+    """Simple Multi-Layer Perceptron used in the project.
+
+    The network has four linear layers. The first three are followed by ReLU
+    activations and the final layer returns logits. The implementation expects
+    flattened inputs of shape ``(batch_size, input_size)`` (for MNIST: input_size=784).
+
+    Parameters
+    ----------
+    input_size : int
+        Dimensionality of the flattened input (default: 784 for 28x28 images).
+    hidden_size : int
+        Number of neurons in the hidden layers (default: 77 in this project).
+    output_size : int
+        Number of output classes (default: 6 for digits 4..9 remapped to 0..5).
     """
     def __init__(self, input_size=784, hidden_size=77, output_size=6):
         super(SMLP, self).__init__()
@@ -23,13 +30,19 @@ class SMLP(nn.Module):
         self.layer4 = nn.Linear(hidden_size, output_size)
         self.relu = nn.ReLU()
 
-    def forward(self, x):
-        """
-        Forward pass through the network.
-        Args:
-            x (torch.Tensor): Input tensor of shape (batch_size, input_size)
-        Returns:
-            torch.Tensor: Output tensor of shape (batch_size, output_size)
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Forward pass.
+
+        Parameters
+        ----------
+        x : torch.Tensor
+            Input tensor of shape (batch_size, input_size). The function does
+            not perform flattening; caller must supply a flattened tensor.
+
+        Returns
+        -------
+        torch.Tensor
+            Logits tensor of shape (batch_size, output_size).
         """
         x = self.relu(self.layer1(x))
         x = self.relu(self.layer2(x))

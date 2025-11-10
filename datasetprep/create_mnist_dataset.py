@@ -19,6 +19,42 @@ except Exception:
 
 
 def create_mnist_h5(output_path: str | Path = "data/processed/mnist.h5", train: bool = True, download: bool = True, labels_to_keep: list[int] | None = None):
+    """Create an HDF5 file containing MNIST images and labels.
+
+    Parameters
+    ----------
+    output_path:
+        Path to the output HDF5 file. Parent directories will be created if
+        they do not exist.
+    train:
+        If True, use the MNIST training split; if False, use the test split.
+    download:
+        If True allow torchvision to download MNIST if the raw files are absent.
+    labels_to_keep:
+        Optional list of integer labels to include in the output. If provided,
+        only samples whose labels are in this list are written into the HDF5
+        file. Note that stored labels remain the original MNIST labels (e.g.
+        4..9); any remapping for training should be applied at load time via
+        ``target_transform``.
+
+    Returns
+    -------
+    Path
+        The path to the created HDF5 file.
+
+    Raises
+    ------
+    RuntimeError
+        If torchvision is not available (checked at module import time).
+
+    Notes
+    -----
+    The function writes two datasets to the HDF5 file:
+    - ``images``: uint8 array with shape (N, 28, 28)
+    - ``labels``: uint8 array with shape (N,)
+
+    The datasets use gzip compression to reduce disk usage.
+    """
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
