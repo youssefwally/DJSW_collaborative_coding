@@ -1,0 +1,34 @@
+name: Automatic testing
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Set up micromamba
+      uses: mamba-org/setup-micromamba@v1 #uses https://github.com/mamba-org/setup-micromamba
+      with:
+        create-args: >-
+          python=3.12
+          pip
+        environment-name: docs-env
+        micromamba-version: 'latest'
+        generate-run-shell: false
+
+    - name: Install dependencies
+      run: |
+        pip install -r docs/requirements-docs.txt
+
+    - name: Run tests
+      run: |
+        pytest
+      shell: bash -el {0}
