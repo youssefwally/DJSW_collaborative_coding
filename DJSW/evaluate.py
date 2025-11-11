@@ -55,7 +55,7 @@ def recall(y_true, y_pred, average="macro"):
         
         if average.lower() == "macro":
             # Make sure to not divide by zero
-            recalls = np.where((tps + fns) == 0, 0, tps / (tps + fns))
+            recalls = np.divide(tps, tps + fns, out=np.zeros_like(tps, dtype=float), where=(tps + fns) != 0)
             recall = np.mean(recalls)
         elif average.lower() == "micro":
             relevant = np.sum(tps) + np.sum(fns) 
@@ -110,7 +110,7 @@ def precision(y_true, y_pred, average="macro"):
         # Calculate true positives (tp) and false positives (fp) for each class
         tps = []
         fps = []        
-        for cl in enumerate(classes):
+        for cl in classes:
             tp = np.sum((y_true == cl) & (y_pred == cl))
             fp = np.sum((y_true != cl) & (y_pred == cl))
             tps.append(tp) 
@@ -133,7 +133,7 @@ def precision(y_true, y_pred, average="macro"):
             else:
                 precision = np.sum(tps)/(retrieved)
         else:
-            raise ValueError(f"average should be 'macro' or 'micro', {argument} was given")       
+            raise ValueError(f"average should be 'macro' or 'micro', {average} was given")       
         
         assert 0 <= precision <= 1, f"Precision score is invalid: {precision:.4f}"
         
