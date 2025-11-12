@@ -100,7 +100,7 @@ The shared infrastructure (`DJSW/main.py`) and agreed wrapper structure for mode
 I also spent a bit of time debugging why pointing to folders in a certain way worked for other people and not for me, where I found that while someone starting the path with "../" worked for them, but I had to change it to "./" to make it work for me. 
 
 ## Someone else running my code
-No one has ran my code yet so it is difficult to say, but I assume it will be as easy for them as it was for me. 
+There were some minor issues when Dennis had to run my code. I had a typo in the filename for the saved test set. While I was able to quickly sort it out, and this is a small project so Dennis could likely have debugged the problem for himself if need be, it did provide an idea of the problems of collaborative coding. Especially having to stop in the middle of doing x and then being reliant on someone else to fix y before you can continue.  
 
 What might have been done differently. 
 - We've run the code on LUMI using the `run.sh` file, adapting it for each run. Using only a single file reduces clutter, but keeping a separate one for each LUMI run might have allowed more reproducibility.  
