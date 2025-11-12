@@ -17,4 +17,4 @@ CONTAINER=/appl/local/containers/sif-images/lumi-pytorch-rocm-6.2.4-python-3.12-
 # add path to additional packages in squasfs file
 export SINGULARITYENV_PREPEND_PATH=/user-software/bin
 # bind squashfs file into container and run python script inside container 
-singularity exec -B ../../DJSW_env.sqsh:/user-software:image-src=/ ../../lumi-pytorch-rocm-6.2.4-python-3.12-pytorch-v2.7.1.sif python DJSW/main.py --username sigurd --exp_name sigurd_evaluate_wally_1 --output_dir ./reports/ --load_checkpoint ./weights/WMLP/wmlp_train_1_checkpoint_epoch_100.pt
+singularity exec -B ../../DJSW_env.sqsh:/user-software:image-src=/ ../../lumi-pytorch-rocm-6.2.4-python-3.12-pytorch-v2.7.1.sif python DJSW/main.py --username dennis --exp_name johannes_evaluate_dennis_2 --output_dir ./reports/ --load_checkpoint ./weights/DMLP/dennis_train2_checkpoint_epoch_20.pt
