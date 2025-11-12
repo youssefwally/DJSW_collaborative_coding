@@ -316,7 +316,11 @@ def evaluate_model(args):
             negative_slope=0.01
         )
     elif args.username == "sigurd":
-        model = SMLP(input_size=img_dim, hidden_size=77, output_size=6)
+        model = SMLP(
+            input_size=img_dim, 
+            hidden_size=77, 
+            output_size=6
+        )
 
     model.load_state_dict(checkpoint)
     model.to(device)
