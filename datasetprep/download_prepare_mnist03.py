@@ -7,8 +7,8 @@ from sklearn.model_selection import train_test_split
 import h5py
 
 ROOT = Path(__file__).resolve().parents[1]
-DOWNLOAD_DIR = ROOT / "data" / "download"
-NPZ_DIR = ROOT / "data" / "npz"
+DOWNLOAD_DIR = ROOT / "data" / "raw" / "MNIST_gz"
+NPZ_DIR = ROOT / "data" / "processed"
 
 DOWNLOAD_DIR.mkdir(parents=True, exist_ok=True)
 NPZ_DIR.mkdir(parents=True, exist_ok=True)
