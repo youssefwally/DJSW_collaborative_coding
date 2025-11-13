@@ -8,7 +8,7 @@ Efficient Lumi-friendly ML Pipeline. The documentation includes info about the c
 :caption: Table of contents
 
 about.md
-../README.md
+./README.md
 dennis.md
 johannes.md
 sigurd.md
