@@ -60,7 +60,7 @@ def recall(y_true, y_pred, average="macro"):
         
         if average.lower() == "macro":
             # Make sure to not divide by zero
-            recalls = np.where((tps + fns) == 0, 0, tps / (tps + fns))
+            recalls = np.divide(tps, tps + fns, out=np.zeros_like(tps, dtype=float), where=(tps + fns) != 0)
             recall = np.mean(recalls)
         elif average.lower() == "micro":
             relevant = np.sum(tps) + np.sum(fns) 
