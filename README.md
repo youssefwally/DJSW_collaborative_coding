@@ -19,7 +19,8 @@ Efficient Lumi-friendly ML Pipeline
 ## Project Organization
 
 ```
-├── LICENSE            <- Open-source license
+├── LICENSE            <- MIT license.
+│
 ├── README.md          <- The top-level README for developers using this project.
 ├── data
 │   ├── external       <- Data from third party sources.
@@ -27,41 +28,44 @@ Efficient Lumi-friendly ML Pipeline
 │   ├── processed      <- The final, canonical data sets for modeling.
 │   └── raw            <- The original, immutable data dump.
 │
-├── docs               <- A default mkdocs project.
+├── datasetprep        <- Preparation for MNIST dataset.
+│
+├── docs               <- Sphix documentation.
 │
 ├── models             <- Model Architectures.
 │
-├── utils
-│   ├── wdataloader.py <- Custom dataloader for USPS (0-6)
+├── reports            <- Generated slurm reports.
 │
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`.
+├── tests              <- Unit tests.
+│
+├── utils
+│   ├──  dataset_mnist03_h5.py  <- Custom dataloader for MNIST (0-3).
+│   ├──  mnist_dataset.py       <- Custom dataloader for MNIST (4-9).
+│   └──  wdataloader.py         <- Custom dataloader for USPS (0-6).
+│
+├── weights            <- Weights for the different models.
 │
 ├── pyproject.toml     <- Project configuration file with package metadata for 
-│                         src and configuration for tools like black
+│                         src and configuration for tools like black.
 │
 ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
 │
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
-│
 ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
+│                         generated with `pip freeze > requirements.txt`.
 │
-├── setup.cfg          <- Configuration file for flake8
+├── uv.lock            <- Lockfile used by uv to reproduce the analysis environment.
 │
 └── DJSW               <- Source code for use in this project.
     │
-    ├── __init__.py             <- Makes src a Python module
+    ├── __init__.py             <- Makes DJSW a Python module.
     │
-    ├── config.py               <- Store useful variables and configuration
+    ├── evaluate.py             <- Code to evaluate trained models.
     │
-    ├── train.py                <- Code to train models
+    ├── run.sh                  <- Batch job script to be submitted to scheduler on LUMI.
     │
-    ├── evaluate.py                 <- Code to evaluate trained models
+    ├── train.py                <- Code to train models.
     │
-    └── main.py                 <- Main entrance script
+    └── main.py                 <- Main entrance script.
 ```
 
 ## CITATION
@@ -77,11 +81,11 @@ Efficient Lumi-friendly ML Pipeline
 }
 ```
 ## Results
-| Model | Accuracy | Precision | Recall | Balanced Accuracy | F1 Score |
-|-------|----------|-----------|--------|-------------------|----------|
-| WMLP | 0.9466   | 0.9452    | 0.9381 | 0.9381            | 0.9416   |
-| DMLP | 0.9916   | 0.9916    | 0.9914 | 0.9914            | 0.9915   |
-| SMLP | 0.9748   | 0.9750    | 0.9750 | 0.9750            | 0.9750   |
+| Model | Accuracy | Balanced Accuracy | Precision | Recall | F1 Score |
+|-------|----------|-------------------|-----------|--------|----------|
+| WMLP  | 0.9466   | 0.9381            | 0.9452    | 0.9381 | 0.9416   |
+| DMLP  | 0.9957   | 0.9956            | 0.9956    | 0.9956 | 0.9956   |
+| SMLP  | 0.9748   | 0.9750            | 0.9750    | 0.9750 | 0.9750   |
 
 ## Installation
 
@@ -142,21 +146,7 @@ You can set up this project using either **uv** or **conda**.
 python -c 'import DJSW; print("Installation successful!")'
 ```
 
-## WMLP Documentation
-### WMLP
-1. Implemented a WMLP model, 2 hidden layers; 100 neurons each, with LeakyReLU as the activation function.
-2. Model was trained by optimizing the Cross Entropy Loss as USPS is a multi-class classification task.
-3. Model was evaluated with Balanced Accuracy as a evaluation metric to be robustly evaluate the model across different classes.
-### wdataloader
-1. Files are saved in an h5 file to save memory and be compatible with LUMI.
-2. Images are loaded into memory from disk only when needed to not use up memory.
-3. made an function that returns the input dim so that it can be passed directly to the model.
-### Misc
-1. Used CookieCutter to make boilerplate project outlet to follow worldwide code conventions
-2. Everything went smoothly (Dennis)
-3. Everything went smoothly (one typo as error)
-4. Sphinx and LUMI
-5. For such a simple project it was fairly easy to run jobs on LUMI. However, I would predict that for a large project with a rapidly changing environment it will be time consuming. (Job-IDs: 13618444, 13631080, 14077470)
+## Individual reports
+To view the individual reports see: [reports](https://youssefwally.github.io/DJSW_collaborative_coding/index.html).
 
 --------
-

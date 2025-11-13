@@ -1,0 +1,10 @@
+Evaluation Results:
+MSE: 0.0149
+RMSE: 0.1221
+MAE: 0.0072
+R²: 0.9876
+Balanced Accuracy: 0.9956
+Accuracy: 0.9957
+Precision: 0.9956
+Recall: 0.9956
+F1: 0.9956
