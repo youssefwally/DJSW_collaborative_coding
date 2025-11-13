@@ -33,7 +33,7 @@ class DMLP(nn.Module):
 
     def _init_weights(self):
         """
-        He initialization for LeakyReLU
+        Kaiming initialization for LeakyReLU
         """
         for m in self.modules():
             if isinstance(m, nn.Linear):
