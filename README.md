@@ -81,12 +81,11 @@ Efficient Lumi-friendly ML Pipeline
 }
 ```
 ## Results
-| Model           | Accuracy | Balanced Accuracy | Precision | Recall | F1 Score |
-|-----------------|----------|-------------------|-----------|--------|----------|
-| WMLP            | 0.9466   | 0.9381            | 0.9452    | 0.9381 | 0.9416   |
-| DMLP (10 epoch) | 0.9916   | 0.9914            | 0.9916    | 0.9914 | 0.9915   |
-| DMLP (20 epoch) | 0.9957   | 0.9956            | 0.9956    | 0.9956 | 0.9956   |
-| SMLP            | 0.9748   | 0.9750            | 0.9750    | 0.9750 | 0.9750   |
+| Model | Accuracy | Balanced Accuracy | Precision | Recall | F1 Score |
+|-------|----------|-------------------|-----------|--------|----------|
+| WMLP  | 0.9466   | 0.9381            | 0.9452    | 0.9381 | 0.9416   |
+| DMLP  | 0.9957   | 0.9956            | 0.9956    | 0.9956 | 0.9956   |
+| SMLP  | 0.9748   | 0.9750            | 0.9750    | 0.9750 | 0.9750   |
 
 ## Installation
 
@@ -148,6 +147,6 @@ python -c 'import DJSW; print("Installation successful!")'
 ```
 
 ## Individual reports
-To view the individual reports see: [reports]().
+To view the individual reports see: [reports](https://youssefwally.github.io/DJSW_collaborative_coding/index.html).
 
 --------
