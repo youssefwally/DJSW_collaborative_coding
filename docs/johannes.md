@@ -7,14 +7,14 @@ As the only non-ML person on the project my tasks was mainly to implement evalua
 ## Evaluation metrics
 The metrics implemented are `accuracy`, `precision`, `recall` and `f1_score`, with the `balanced_accuracy` being implemented by [Waly](WMLP.md).
 
-Out of the 4 metrics, `accuracy` was definetly the simples to implement, being essentially:
+Out of the 4 metrics, `accuracy` was definitely the simplest to implement, being essentially:
 ```python
 def accuracy(y_true, y_pred):
     ...
     accuracy = np.sum(y_true == y_pred)/len(y_true)
     return accuracy
 ```
-However, the definition for accuracy for multi-class classificiation was the hardest to understand as it seemed complicated at first. As I'm not well versed in ML I was not sure which averaging mode is typically used when evaluating models, and therefore I added it as a `str` switch supporting both "micro" and "macro" averages. See for instance the implementation of `recall`:
+However, the definition for accuracy for multi-class classification was the hardest to understand as it seemed complicated at first. As I'm not well versed in ML I was not sure which averaging mode is typically used when evaluating models, and therefore I added it as a `str` switch supporting both "micro" and "macro" averages. See for instance the implementation of `recall`:
 ```python
 def recall(y_true, y_pred, average="macro"):
     """
@@ -242,21 +242,19 @@ jobs:
 ### Running another person's code
 As I'm not a ML-researcher myself it was a bit daunting to understand what the other's code did, and although strictly not necessary I ended up exploring the data and models to get a better understanding of what the code actually did. What was maybe the most difficult was to understand how the model, optimizer and loss criterion was able to communicate with each other in the `train_epoch` and `validate` functions, as I had no prior knowledge of the underlying torch tensors and the dynamical computational graphs used by the autograd system. Yet again, not necessary, but when reviewing the code I could not wrap my head around how the code worked.
 
-In the beginning I also commented alot on the others work, as I was very unfamiliar with how to properly set up a python project, and I recall trying to make sure that the *uv* environment identically reproduced the *conda* environment. I had no prior knowledge with *uv* and the dependency system works differently from *Julia*, but in the end I hope that properly reviewing the *uv* environment building led to both me and Dennis learning it better.
+In the beginning I also commented a lot on the others work, as I was very unfamiliar with how to properly set up a python project, and I recall trying to make sure that the *uv* environment identically reproduced the *conda* environment. I had no prior knowledge with *uv* and the dependency system works differently from *Julia*, but in the end I hope that properly reviewing the *uv* environment building led to both me and Dennis learning it better.
 
-Another aspect of the collaboration which was a bit tricky was knowing when it was okay to delete seamingly stale files. I ended up waiting till the end of the project to do so, but perhaps if I had more time I would of properly discussed it in an issue. It was also a bit fuzy who was responsible for reporting the evalution scores in the `README.md`, with everyone ending up doing so.
+Another aspect of the collaboration which was a bit tricky was knowing when it was okay to delete seemingly stale files. I ended up waiting till the end of the project to do so, but perhaps if I had more time I would of properly discussed it in an issue. It was also a bit fuzy who was responsible for reporting the evaluation scores in the `README.md`, with everyone ending up doing so.
 
 ### Having other people run my code
-The only issue I can recall with others running my code was that I messed up the indentation in the `evaluate.py` file, which broke the code and which made it harder for Dennis to understand what I had implemented. This was however quickly sorted out. There was also some confussion around the documentation, which was discussed in person, hence little information can be found about it in the issues or pull requests.
+The only issue I can recall with others running my code was that I messed up the indentation in the `evaluate.py` file, which broke the code and which made it harder for Dennis to understand what I had implemented. This was however quickly sorted out. There was also some confusion around the documentation, which was discussed in person, hence little information can be found about it in the issues or pull requests.
 
 ### Running jobs on LUMI
-Describe your experience with running jobs on LUMI. (Include Job-IDs in description)
-
 The main bedrock was laid by Waly, which made running the jobs on *LUMI* quite simple, but the 
 [AI guide](https://github.com/Lumi-supercomputer/LUMI-AI-Guide) from *LUMI* also turned out to be quite useful. My main struggle was with pushing to *GitHub*, which ended up requiring setting up a *SSH key* linking *GitHub* to *LUMI* and changing the *remote* url.
 
 I evaluated the 4 sets of weights and biases that I found in the `weights` folder: 
-| Model | Model weights and biases filename    | Slurm report (Job-ID) |
+| Model | Model weights and biases filename    | Slurm report (ID) |
 |-------|--------------------------------------|-----------------------|
 | DMLP  | dmlp_test_1_checkpoint_epoch_10.pt   | slurm-14592009.out    |
 | DMLP  | dennis_train2_checkpoint_epoch_20.pt | slurm-14592278.out    |
