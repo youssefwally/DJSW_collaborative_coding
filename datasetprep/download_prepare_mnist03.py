@@ -153,4 +153,4 @@ def main(npz=False, h5=True):
         save_to_h5(NPZ_DIR / "mnist03.h5",data)
 
 if __name__ == "__main__":
-    main(npz=True, h5=True)
+    main(npz=False, h5=True)
