@@ -150,7 +150,7 @@ I could make use of most of the taught tools:
 1. Git/Github: Had some basic knowledge about git from before but only used it sporadically and only locally.
 Working on this project improved my local git workflow and working speed. Collaborating on GitHub has been a new experience.
 2. Documentation with Sphinx: Adding a comprehensive documentation of own code and code from collaborators, and publish the documentation on GitHub.
-3. making a proper README.md
+3. Making a proper README.md
 4. Testing with pytest: so far I only have been working on small scientific codebases and have not yet experienced a need for proper testing,
 but see the value in collaborative projects, especially implemented with GitHub Actions, to have an automatic guard against errors caused by new commited code.
 5. Lintering with Ruff
