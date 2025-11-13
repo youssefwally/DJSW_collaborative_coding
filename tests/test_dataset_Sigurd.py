@@ -10,34 +10,32 @@ import h5py
 import numpy as np
 
 
-def main(argv=None):
+def test_verify_mnist_files():
     """Verify one or more MNIST HDF5 files.
 
-    The script inspects top-level datasets and validates that `images` and
+    The test inspects top-level datasets and validates that `images` and
     `labels` are present. By default it expects labels to be in the set
-    4..9 (the project's filtered subset) but you can pass a different set with
-    --expect.
+    4..9 (the project's filtered subset).
+    
+    Set the paths to check by modifying the files_to_check list below.
     """
-    argv = argv or sys.argv[1:]
-    import argparse
+    # Specify files to check here
+    files_to_check = [
+        "data/processed/mnist_test_9_5.h5",
+        # Add more file paths here as needed
+    ]
+    
+    # Expected labels (modify as needed)
+    expected = [4, 5, 6, 7, 8, 9]
 
-    parser = argparse.ArgumentParser(description="Verify MNIST HDF5 file contents")
-    parser.add_argument("paths", nargs="+", help="One or more HDF5 files to inspect")
-    parser.add_argument("--expect", default="4,5,6,7,8,9",
-                        help="Comma-separated expected labels (default: 4,5,6,7,8,9). Use 0-9 for full set.")
-    args = parser.parse_args(argv)
-
-    try:
-        expected = [int(x) for x in args.expect.split(",") if x.strip() != ""]
-    except ValueError:
-        print("--expect must be a comma-separated list of integers, e.g. 4,5,6,7,8,9")
-        return 4
-
+    all_errors = []
     overall_rc = 0
-    for p in args.paths:
+    
+    for p in files_to_check:
         path = Path(p)
         if not path.exists():
             print(f"File not found: {path}")
+            all_errors.append(f"File not found: {path}")
             overall_rc = 3
             continue
 
@@ -48,6 +46,7 @@ def main(argv=None):
                 print("keys:", keys)
                 if "images" not in f or "labels" not in f:
                     print("  ERROR: Expected datasets 'images' and 'labels' not found")
+                    all_errors.append(f"{path}: Expected datasets 'images' and 'labels' not found")
                     overall_rc = 5
                     continue
 
@@ -71,11 +70,13 @@ def main(argv=None):
                     lab = np.array(labels[:])
                 except Exception as e:
                     print(f"  ERROR reading labels: {e}")
+                    all_errors.append(f"{path}: ERROR reading labels: {e}")
                     overall_rc = 6
                     continue
 
                 if lab.size == 0:
                     print("  WARNING: labels is empty")
+                    all_errors.append(f"{path}: WARNING: labels is empty")
                     overall_rc = max(overall_rc, 7)
                     continue
 
@@ -89,6 +90,7 @@ def main(argv=None):
                 missing = set(expected) - set(unique.tolist())
                 if unexpected:
                     print(f"  ERROR: found unexpected labels: {sorted(unexpected)}")
+                    all_errors.append(f"{path}: ERROR: found unexpected labels: {sorted(unexpected)}")
                     overall_rc = 8
                 if missing:
                     print(f"  NOTE: expected labels missing from file: {sorted(missing)}")
@@ -96,8 +98,15 @@ def main(argv=None):
 
         except Exception as e:
             print(f"  ERROR opening file {path}: {e}")
+            all_errors.append(f"{path}: ERROR opening file: {e}")
             overall_rc = 9
 
-    return overall_rc
+    # Fail the test if any errors were collected
+    if all_errors:
+        error_msg = "\n".join(all_errors)
+        pytest.fail(f"\nVerification failed with return code {overall_rc}:\n{error_msg}")
 
-main()
+
+if __name__ == "__main__":
+    # Run the test function directly (not as pytest)
+    test_verify_mnist_files()
