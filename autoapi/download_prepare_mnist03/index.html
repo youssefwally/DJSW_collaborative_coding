@@ -1,0 +1,280 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>download_prepare_mnist03 &mdash; DJSW Collaborative Coding Template 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="test_evaluation_metrics" href="../test_evaluation_metrics/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            DJSW Collaborative Coding Template
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">About this code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dennis.html">Dennis Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../johannes.html">Johannes report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sigurd.html">Sigurd — Individual task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WMLP.html">WMLP Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../dmlp/index.html">dmlp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../smlp/index.html">smlp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wmlp/index.html">wmlp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DJSW/index.html">DJSW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../test_data/index.html">test_data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wdataloader/index.html">wdataloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mnist_dataset/index.html">mnist_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../test_dataset_d/index.html">test_dataset_d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dataset_mnist03_h5/index.html">dataset_mnist03_h5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../test_dataset_Sigurd/index.html">test_dataset_Sigurd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_mnist_dataset/index.html">create_mnist_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../test_evaluation_metrics/index.html">test_evaluation_metrics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">download_prepare_mnist03</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#attributes">Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#download_prepare_mnist03.ROOT"><code class="docutils literal notranslate"><span class="pre">ROOT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#download_prepare_mnist03.DOWNLOAD_DIR"><code class="docutils literal notranslate"><span class="pre">DOWNLOAD_DIR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#download_prepare_mnist03.NPZ_DIR"><code class="docutils literal notranslate"><span class="pre">NPZ_DIR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#download_prepare_mnist03.orig"><code class="docutils literal notranslate"><span class="pre">orig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#download_prepare_mnist03.load_idx_images"><code class="docutils literal notranslate"><span class="pre">load_idx_images()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#download_prepare_mnist03.load_idx_labels"><code class="docutils literal notranslate"><span class="pre">load_idx_labels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#download_prepare_mnist03.save_to_npz"><code class="docutils literal notranslate"><span class="pre">save_to_npz()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#download_prepare_mnist03.save_to_h5"><code class="docutils literal notranslate"><span class="pre">save_to_h5()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#download_prepare_mnist03.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">DJSW Collaborative Coding Template</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">API Reference</a></li>
+      <li class="breadcrumb-item active">download_prepare_mnist03</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/autoapi/download_prepare_mnist03/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-download_prepare_mnist03">
+<span id="download-prepare-mnist03"></span><h1>download_prepare_mnist03<a class="headerlink" href="#module-download_prepare_mnist03" title="Link to this heading"></a></h1>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#download_prepare_mnist03.ROOT" title="download_prepare_mnist03.ROOT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ROOT</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#download_prepare_mnist03.DOWNLOAD_DIR" title="download_prepare_mnist03.DOWNLOAD_DIR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DOWNLOAD_DIR</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#download_prepare_mnist03.NPZ_DIR" title="download_prepare_mnist03.NPZ_DIR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NPZ_DIR</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#download_prepare_mnist03.orig" title="download_prepare_mnist03.orig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">orig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#download_prepare_mnist03.load_idx_images" title="download_prepare_mnist03.load_idx_images"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_idx_images</span></code></a>(path)</p></td>
+<td><p>Load MNIST image file (idx3 format) from .gz</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#download_prepare_mnist03.load_idx_labels" title="download_prepare_mnist03.load_idx_labels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_idx_labels</span></code></a>(path)</p></td>
+<td><p>Load MNIST label file (idx1 format) from .gz</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#download_prepare_mnist03.save_to_npz" title="download_prepare_mnist03.save_to_npz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_to_npz</span></code></a>(npz_path, data)</p></td>
+<td><p>Save the image data and labels with splits &quot;train&quot; and &quot;test&quot; in npz file</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#download_prepare_mnist03.save_to_h5" title="download_prepare_mnist03.save_to_h5"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_to_h5</span></code></a>(h5_path, data)</p></td>
+<td><p>Save the image data and labels with splits &quot;train&quot;, &quot;val&quot; and &quot;test&quot; in h5 file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#download_prepare_mnist03.main" title="download_prepare_mnist03.main"><code class="xref py py-obj docutils literal notranslate"><span class="pre">main</span></code></a>([npz, h5])</p></td>
+<td><p>Open raw MNIST train and test image data and labels, create val split from train data and save as npz and or h5</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="download_prepare_mnist03.ROOT">
+<span class="sig-prename descclassname"><span class="pre">download_prepare_mnist03.</span></span><span class="sig-name descname"><span class="pre">ROOT</span></span><a class="headerlink" href="#download_prepare_mnist03.ROOT" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="download_prepare_mnist03.DOWNLOAD_DIR">
+<span class="sig-prename descclassname"><span class="pre">download_prepare_mnist03.</span></span><span class="sig-name descname"><span class="pre">DOWNLOAD_DIR</span></span><a class="headerlink" href="#download_prepare_mnist03.DOWNLOAD_DIR" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="download_prepare_mnist03.NPZ_DIR">
+<span class="sig-prename descclassname"><span class="pre">download_prepare_mnist03.</span></span><span class="sig-name descname"><span class="pre">NPZ_DIR</span></span><a class="headerlink" href="#download_prepare_mnist03.NPZ_DIR" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="download_prepare_mnist03.orig">
+<span class="sig-prename descclassname"><span class="pre">download_prepare_mnist03.</span></span><span class="sig-name descname"><span class="pre">orig</span></span><a class="headerlink" href="#download_prepare_mnist03.orig" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="download_prepare_mnist03.load_idx_images">
+<span class="sig-prename descclassname"><span class="pre">download_prepare_mnist03.</span></span><span class="sig-name descname"><span class="pre">load_idx_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#download_prepare_mnist03.load_idx_images" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><p>Load MNIST image file (idx3 format) from .gz</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Args:</dt><dd><p>path: path to raw image data gzip file</p>
+</dd>
+<dt>Returns:</dt><dd><p>image data as numpy array (n_images, n_rows, n_cols)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="download_prepare_mnist03.load_idx_labels">
+<span class="sig-prename descclassname"><span class="pre">download_prepare_mnist03.</span></span><span class="sig-name descname"><span class="pre">load_idx_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#download_prepare_mnist03.load_idx_labels" title="Link to this definition"></a></dt>
+<dd><p>Load MNIST label file (idx1 format) from .gz</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>path: path to raw label data gzip file</p>
+</dd>
+</dl>
+<p>Returns: labels as numpy array (n_labels,)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="download_prepare_mnist03.save_to_npz">
+<span class="sig-prename descclassname"><span class="pre">download_prepare_mnist03.</span></span><span class="sig-name descname"><span class="pre">save_to_npz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">npz_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#download_prepare_mnist03.save_to_npz" title="Link to this definition"></a></dt>
+<dd><p>Save the image data and labels with splits “train” and “test” in npz file
+Args:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>npz_path: Path</dt><dd><p>output path</p>
+</dd>
+<dt>data: dict</dt><dd><p>data dict with entries X_train, y_train, X_val, y_val, X_test, y_test</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="download_prepare_mnist03.save_to_h5">
+<span class="sig-prename descclassname"><span class="pre">download_prepare_mnist03.</span></span><span class="sig-name descname"><span class="pre">save_to_h5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">h5_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#download_prepare_mnist03.save_to_h5" title="Link to this definition"></a></dt>
+<dd><p>Save the image data and labels with splits “train”, “val” and “test” in h5 file
+Args:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>h5_path:</dt><dd><p>output path</p>
+</dd>
+<dt>data: dict</dt><dd><p>data dict with entries X_train, y_train, X_val, y_val, X_test, y_test</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="download_prepare_mnist03.main">
+<span class="sig-prename descclassname"><span class="pre">download_prepare_mnist03.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">npz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h5</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#download_prepare_mnist03.main" title="Link to this definition"></a></dt>
+<dd><p>Open raw MNIST train and test image data and labels, create val split from train data and save as npz and or h5
+Args:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>npz: bool</dt><dd><p>If True, save data and labels as npz file</p>
+</dd>
+<dt>h5: bool</dt><dd><p>If True, save data and labels as h5 file</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../test_evaluation_metrics/index.html" class="btn btn-neutral float-left" title="test_evaluation_metrics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Dennis, Johannes Mørkrid, Sigurd and Youssef Wally.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

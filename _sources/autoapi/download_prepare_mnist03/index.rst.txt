@@ -1,0 +1,95 @@
+download_prepare_mnist03
+========================
+
+.. py:module:: download_prepare_mnist03
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   download_prepare_mnist03.ROOT
+   download_prepare_mnist03.DOWNLOAD_DIR
+   download_prepare_mnist03.NPZ_DIR
+   download_prepare_mnist03.orig
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   download_prepare_mnist03.load_idx_images
+   download_prepare_mnist03.load_idx_labels
+   download_prepare_mnist03.save_to_npz
+   download_prepare_mnist03.save_to_h5
+   download_prepare_mnist03.main
+
+
+Module Contents
+---------------
+
+.. py:data:: ROOT
+
+.. py:data:: DOWNLOAD_DIR
+
+.. py:data:: NPZ_DIR
+
+.. py:data:: orig
+
+.. py:function:: load_idx_images(path: pathlib.Path)
+
+       Load MNIST image file (idx3 format) from .gz
+
+   Args:
+       path: path to raw image data gzip file
+
+   Returns:
+       image data as numpy array (n_images, n_rows, n_cols)
+
+
+
+.. py:function:: load_idx_labels(path: pathlib.Path)
+
+   Load MNIST label file (idx1 format) from .gz
+
+   Args:
+       path: path to raw label data gzip file
+
+   Returns: labels as numpy array (n_labels,)
+
+
+
+.. py:function:: save_to_npz(npz_path, data)
+
+   Save the image data and labels with splits "train" and "test" in npz file
+   Args:
+       npz_path: Path
+           output path
+
+       data: dict
+           data dict with entries X_train, y_train, X_val, y_val, X_test, y_test
+
+
+.. py:function:: save_to_h5(h5_path, data)
+
+   Save the image data and labels with splits "train", "val" and "test" in h5 file
+   Args:
+       h5_path:
+           output path
+
+       data: dict
+           data dict with entries X_train, y_train, X_val, y_val, X_test, y_test
+
+
+.. py:function:: main(npz=False, h5=True)
+
+   Open raw MNIST train and test image data and labels, create val split from train data and save as npz and or h5
+   Args:
+       npz: bool
+           If True, save data and labels as npz file
+       h5: bool
+           If True, save data and labels as h5 file
+
+

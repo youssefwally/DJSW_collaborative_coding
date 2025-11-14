@@ -1,0 +1,221 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WMLP Documentation &mdash; DJSW Collaborative Coding Template 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Reference" href="autoapi/index.html" />
+    <link rel="prev" title="Sigurd — Individual task" href="sigurd.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            DJSW Collaborative Coding Template
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About this code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dennis.html">Dennis Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="johannes.html">Johannes report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sigurd.html">Sigurd — Individual task</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">WMLP Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wmlp">WMLP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#structure">Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#usps">USPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#balanced-accuracy">Balanced Accuracy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#misc">Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DJSW Collaborative Coding Template</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">WMLP Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/WMLP.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="wmlp-documentation">
+<h1>WMLP Documentation<a class="headerlink" href="#wmlp-documentation" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<hr class="docutils" />
+<p>A dataset pipeline was developed for the USPS digits 0–6, including loading, and preprocessing. The processed data would be fed into a classification network using a simple MLP with two hidden layers of 100 neurons each and a Leaky ReLU activation. Evaluation was conducted using the balanced accuracy metric, which was implemented from scratch.</p>
+</section>
+<section id="wmlp">
+<h2>WMLP<a class="headerlink" href="#wmlp" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Implemented a WMLP model, 2 hidden layers; 100 neurons each, with LeakyReLU as the activation function.</p></li>
+<li><p>Model was trained by optimizing the Cross Entropy Loss as USPS is a multi-class classification task.</p></li>
+<li><p>Model was evaluated with Balanced Accuracy as a evaluation metric to be robustly evaluate the model across different classes.</p></li>
+</ol>
+<section id="structure">
+<h3>Structure<a class="headerlink" href="#structure" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">WMLP</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Multi-Layer Perceptron with 2 hidden layers (100 neurons each).</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        input_dim (int): Dimension of input features</span>
+<span class="sd">        output_dim (int): Dimension of output</span>
+<span class="sd">        hidden_dim (int): Number of neurons in each hidden layer (default: 100)</span>
+<span class="sd">        negative_slope (float): Controls the angle of the negative slope for LeakyReLU (default: 0.01)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">WMLP</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">activation</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="n">negative_slope</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="usps">
+<h2>USPS<a class="headerlink" href="#usps" title="Link to this heading"></a></h2>
+<hr class="docutils" />
+<p>The dataloader provides image loading and preprocessing for a subset of the USPS collection covering digits 0–6. Data are obtained from official sources, transformed into ready-to-use image/label pairs, partitioned, and saved in the HDF5 file format for convenient access. The loader retrieves one example at a time, ensuring only a single sample is held in memory to minimize resource usage.</p>
+</section>
+<section id="balanced-accuracy">
+<h2>Balanced Accuracy<a class="headerlink" href="#balanced-accuracy" title="Link to this heading"></a></h2>
+<hr class="docutils" />
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">balanced_accuracy</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate balanced accuracy for multi-class classification.</span>
+<span class="sd">    </span>
+<span class="sd">    Balanced accuracy is the average of recall obtained on each class.</span>
+<span class="sd">    It&#39;s particularly useful for imbalanced datasets.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        y_true: Ground truth labels (1D array-like)</span>
+<span class="sd">        y_pred: Predicted labels (1D array-like)</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Balanced accuracy score between 0 and 1</span>
+<span class="sd">    </span>
+<span class="sd">    Raises:</span>
+<span class="sd">        AssertionError: If inputs are invalid</span>
+<span class="sd">        ValueError: If computation fails</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="o">.........</span>
+        
+        <span class="c1"># Calculate recall for each class</span>
+        <span class="n">recalls</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
+            <span class="n">cls_mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_true</span> <span class="o">==</span> <span class="bp">cls</span><span class="p">)</span>
+            <span class="n">n_cls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cls_mask</span><span class="p">)</span>
+            
+            <span class="k">if</span> <span class="n">n_cls</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
+            
+            <span class="n">tp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">y_true</span> <span class="o">==</span> <span class="bp">cls</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="bp">cls</span><span class="p">))</span>
+            <span class="n">recall</span> <span class="o">=</span> <span class="n">tp</span> <span class="o">/</span> <span class="n">n_cls</span>
+            <span class="n">recalls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">recall</span><span class="p">)</span>
+        
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">recalls</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;No valid recalls computed&quot;</span>
+        
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">recalls</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="misc">
+<h2>Misc<a class="headerlink" href="#misc" title="Link to this heading"></a></h2>
+<hr class="docutils" />
+<ol class="arabic simple">
+<li><p>Used CookieCutter to make boilerplate project outlet to follow worldwide code conventions</p></li>
+<li><p>Everything went smoothly (Dennis)</p></li>
+<li><p>Everything went smoothly (one typo as error)</p></li>
+<li><p>New knowledge: Sphinx and LUMI</p></li>
+<li><p>For such a simple project it was fairly easy to run jobs on LUMI. However, I would predict that for a large project with a rapidly changing environment it will be time consuming. (Job-IDs: 13618444, 13631080, 14077470)</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sigurd.html" class="btn btn-neutral float-left" title="Sigurd — Individual task" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="autoapi/index.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Dennis, Johannes Mørkrid, Sigurd and Youssef Wally.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+DJSW.main
+=========
+
+.. py:module:: DJSW.main
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   DJSW.main.args
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   DJSW.main.getArguments
+   DJSW.main.main
+
+
+Module Contents
+---------------
+
+.. py:function:: getArguments()
+
+   Parses command-line options. 
+
+
+.. py:function:: main(args)
+
+.. py:data:: args
+

@@ -1,0 +1,28 @@
+DJSW.train
+==========
+
+.. py:module:: DJSW.train
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   DJSW.train.train_epoch
+   DJSW.train.validate
+   DJSW.train.train_pipeline
+   DJSW.train.train_model
+
+
+Module Contents
+---------------
+
+.. py:function:: train_epoch(model, dataloader, optimizer, criterion, device)
+
+.. py:function:: validate(model, dataloader, criterion, device)
+
+.. py:function:: train_pipeline(img_dim, train_loader, val_loader, args)
+
+.. py:function:: train_model(args)
+

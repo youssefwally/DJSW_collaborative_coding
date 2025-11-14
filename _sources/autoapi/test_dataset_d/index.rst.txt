@@ -1,0 +1,35 @@
+test_dataset_d
+==============
+
+.. py:module:: test_dataset_d
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   test_dataset_d.ROOT_DIR
+   test_dataset_d.DATA_DIR
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   test_dataset_d.test_d_data_available
+   test_dataset_d.test_mnist03_dataset
+
+
+Module Contents
+---------------
+
+.. py:data:: ROOT_DIR
+
+.. py:data:: DATA_DIR
+
+.. py:function:: test_d_data_available()
+
+.. py:function:: test_mnist03_dataset()
+

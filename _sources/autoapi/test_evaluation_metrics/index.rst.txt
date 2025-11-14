@@ -1,0 +1,31 @@
+test_evaluation_metrics
+=======================
+
+.. py:module:: test_evaluation_metrics
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   test_evaluation_metrics.test_recall
+   test_evaluation_metrics.test_precision
+   test_evaluation_metrics.test_accuracy
+   test_evaluation_metrics.test_balanced_accuracy
+   test_evaluation_metrics.test_f1_score
+
+
+Module Contents
+---------------
+
+.. py:function:: test_recall()
+
+.. py:function:: test_precision()
+
+.. py:function:: test_accuracy()
+
+.. py:function:: test_balanced_accuracy()
+
+.. py:function:: test_f1_score()
+

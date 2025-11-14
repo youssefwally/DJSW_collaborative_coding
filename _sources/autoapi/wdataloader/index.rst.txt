@@ -1,0 +1,52 @@
+wdataloader
+===========
+
+.. py:module:: wdataloader
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   wdataloader.USPS06Dataset
+
+
+Module Contents
+---------------
+
+.. py:class:: USPS06Dataset(h5_file='./data/raw/usps.h5', set_type='train', transform=None)
+
+   Bases: :py:obj:`torch.utils.data.Dataset`
+
+
+   Dataset class for filtered USPS data (digits 0-6) stored in H5 file.
+
+
+   .. py:attribute:: h5_file
+      :value: './data/raw/usps.h5'
+
+
+
+   .. py:attribute:: set_type
+      :value: 'train'
+
+
+
+   .. py:attribute:: transform
+      :value: None
+
+
+
+   .. py:method:: __len__()
+
+
+   .. py:method:: get_input_dim()
+
+      Returns the input dimension of the dataset samples.
+
+
+
+   .. py:method:: __getitem__(idx)
+
+

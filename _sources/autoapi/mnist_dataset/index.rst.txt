@@ -1,0 +1,97 @@
+mnist_dataset
+=============
+
+.. py:module:: mnist_dataset
+
+.. autoapi-nested-parse::
+
+   HDF5-backed MNIST Dataset for PyTorch.
+
+   This implements a lightweight dataset that lazily opens an HDF5 file and
+   returns (image_tensor, label) pairs. Images are returned as uint8 tensors
+   scaled to [0,1] if a transform isn't provided.
+
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   mnist_dataset.MnistH5Dataset
+
+
+Module Contents
+---------------
+
+.. py:class:: MnistH5Dataset(h5_path: str | pathlib.Path, transform: Optional[Callable] = None, target_transform: Optional[Callable] = None)
+
+   Bases: :py:obj:`torch.utils.data.Dataset`
+
+
+   .. py:attribute:: h5_path
+
+
+   .. py:attribute:: transform
+      :value: None
+
+
+
+   .. py:attribute:: target_transform
+      :value: None
+
+
+
+   .. py:attribute:: _h5
+      :value: None
+
+
+
+   .. py:method:: _ensure_open()
+
+
+   .. py:method:: __len__()
+
+      Return the number of samples in the dataset.
+
+      This reads the ``labels`` dataset's first dimension to determine
+      the length and therefore triggers lazy opening of the HDF5 file.
+
+
+
+   .. py:method:: __getitem__(idx)
+
+      Return the (image, label) pair for the given index.
+
+      Parameters
+      ----------
+      idx : int
+          Index of the requested sample.
+
+      Returns
+      -------
+      (torch.Tensor, int)
+          A tuple of (image_tensor, label). The image tensor is a float
+          tensor scaled to [0,1] with shape (C, H, W). Label is an int and
+          may have been transformed by ``target_transform`` if provided.
+
+      Raises
+      ------
+      IndexError
+          If the index is out of bounds for the dataset.
+
+
+
+   .. py:method:: close()
+
+      Close the underlying HDF5 file handle if open.
+
+      This is safe to call multiple times. It is also invoked from
+      ``__del__`` to ensure resources are released when the dataset is
+      garbage-collected.
+
+
+
+   .. py:method:: __del__()
+
+

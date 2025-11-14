@@ -1,0 +1,103 @@
+dataset_mnist03_h5
+==================
+
+.. py:module:: dataset_mnist03_h5
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   dataset_mnist03_h5.Mnist03Dataset
+
+
+Module Contents
+---------------
+
+.. py:class:: Mnist03Dataset(h5_path, split='train', normalize=True, flatten=True)
+
+   Dataset class for MNIST03 (MNIST numbers 0-3) stored in HDF5 format.
+   Split in train, val and test set, image data and corresponding labels for each split are accessible through
+     /<split>/images : uint8 [N, 28, 28]
+     /<split>/labels : int64 [N]
+
+     Args:
+           h5_path: Path to HDF5 file
+           split: Dataset split ("train", "val" or "test"). Default is "train".
+           normalize: bool
+               If True, normalize the images to [0, 1]. Default is True.
+           flatten: bool
+               If True, flatten the images from (1, 28, 28) to (784,). Default is True.
+
+
+   .. py:attribute:: h5_path
+      :value: ''
+
+
+
+   .. py:attribute:: split
+      :value: 'train'
+
+
+
+   .. py:attribute:: normalize
+      :value: True
+
+
+
+   .. py:attribute:: flatten
+      :value: True
+
+
+
+   .. py:attribute:: _file
+      :value: None
+
+
+
+   .. py:attribute:: _pid
+      :value: None
+
+
+
+   .. py:attribute:: _length
+      :value: None
+
+
+
+   .. py:method:: _ensure_open()
+
+      Open the HDF5 file
+
+      Returns: h5py.File
+          A handle to the open HDF5 file (read-only)
+
+
+
+   .. py:method:: __len__()
+
+      Number of samples in the current split.
+
+
+
+   .. py:method:: __getitem__(idx)
+
+      Get a sample from the data set
+      Args:
+          idx: index of sample
+
+      Returns:
+          X_t: torch.Tensor
+              sample image tensor
+          y_t: torch.Tensor
+              sample label tensor
+
+
+
+   .. py:method:: __del__()
+
+      Close the HDF5 file
+
+
+

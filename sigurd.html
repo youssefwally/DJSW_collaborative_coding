@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sigurd — Individual task &mdash; DJSW Collaborative Coding Template 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="WMLP Documentation" href="WMLP.html" />
+    <link rel="prev" title="Johannes report" href="johannes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            DJSW Collaborative Coding Template
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About this code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dennis.html">Dennis Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="johannes.html">Johannes report</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sigurd — Individual task</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#task-overview">Task Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#network-implementation-smlp">Network implementation — SMLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mnist-dataset-hdf5-writer-in-depth">MNIST dataset &amp; HDF5 writer (in-depth)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#script-function-reference">Script &amp; function reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#accuracy-metrics-in-depth">Accuracy &amp; metrics (in-depth)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-someone-else-s-code">Running someone else’s code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#someone-else-running-my-code">Someone else running my code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tools-used">Tools used</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lumi-experience-job-evidence">LUMI experience (job evidence)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#artifacts-and-repo-pointers">Artifacts and repo pointers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="WMLP.html">WMLP Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DJSW Collaborative Coding Template</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Sigurd — Individual task</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/sigurd.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sigurd-individual-task">
+<h1>Sigurd — Individual task<a class="headerlink" href="#sigurd-individual-task" title="Link to this heading"></a></h1>
+<section id="task-overview">
+<h2>Task Overview<a class="headerlink" href="#task-overview" title="Link to this heading"></a></h2>
+<p>My task, in addition to the overall project goals, consisted of the following sub-tasks:</p>
+<ul class="simple">
+<li><p>Implement a script to download the MNIST dataset and write it to HDF5, and a dataloader to load only the images of the digits 4–9.</p></li>
+<li><p>Implement SMLP: a multi-layer perceptron with 4 hidden layers, each with 77 neurons, using ReLU activations.</p></li>
+<li><p>Train the SMLP model on the LUMI supercomputer and save checkpoints.</p></li>
+<li><p>Evaluate Wally’s WMLP using the provided evaluation script (also on LUMI) and produce comparative metrics.</p></li>
+</ul>
+</section>
+<section id="network-implementation-smlp">
+<h2>Network implementation — SMLP<a class="headerlink" href="#network-implementation-smlp" title="Link to this heading"></a></h2>
+<p>Files: <code class="docutils literal notranslate"><span class="pre">models/smlp.py</span></code></p>
+<p>Design summary:</p>
+<ul class="simple">
+<li><p>Architecture: input layer -&gt; 4 hidden layers (each 77 units, ReLU) -&gt; output layer. Input size is 28*28=784 (flattened MNIST), output size equals number of classes (6 for digits 4–9).</p></li>
+<li><p>Forward pass: flatten input; pass through dense layers with ReLU; final linear layer returns logits (no softmax).</p></li>
+<li><p>Loss &amp; optimizer: CrossEntropyLoss + Adam. These are standard choices for all the MLP experiments.</p></li>
+</ul>
+</section>
+<section id="mnist-dataset-hdf5-writer-in-depth">
+<h2>MNIST dataset &amp; HDF5 writer (in-depth)<a class="headerlink" href="#mnist-dataset-hdf5-writer-in-depth" title="Link to this heading"></a></h2>
+<p>Files: <code class="docutils literal notranslate"><span class="pre">datasetprep/create_mnist_dataset.py</span></code>, <code class="docutils literal notranslate"><span class="pre">utils/mnist_dataset.py</span></code> (<code class="docutils literal notranslate"><span class="pre">MnistH5Dataset</span></code>)</p>
+<p>What the writer does:</p>
+<ul class="simple">
+<li><p>Downloads MNIST using <code class="docutils literal notranslate"><span class="pre">torchvision.datasets.MNIST</span></code> into <code class="docutils literal notranslate"><span class="pre">data/raw/mnist/</span></code>.</p></li>
+<li><p>Writes two datasets into an HDF5 file: <code class="docutils literal notranslate"><span class="pre">images</span></code> (shape (N,28,28)) and <code class="docutils literal notranslate"><span class="pre">labels</span></code> (shape (N,)).</p></li>
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">labels_to_keep</span></code> argument you can create reduced HDF5 subset of MNIST containing only images with specific labels.</p></li>
+</ul>
+<p>What the dataset loader does:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MnistH5Dataset</span></code> opens the HDF5 file and returns (image_tensor, label). Images are converted to float tensors in [0,1].</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">target_transform</span></code> is supported — the codebase uses <code class="docutils literal notranslate"><span class="pre">lambda</span> <span class="pre">t:</span> <span class="pre">int(t)-4</span></code> so labels 4-9 map to 0-5 during training/evaluation without altering the stored files.</p></li>
+</ul>
+</section>
+<section id="script-function-reference">
+<h2>Script &amp; function reference<a class="headerlink" href="#script-function-reference" title="Link to this heading"></a></h2>
+<p>This section documents the primary functions/classes and CLI flags so teammates can quickly reuse them.</p>
+<ul class="simple">
+<li><p>datasetprep/create_mnist_dataset.py</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">create_mnist_h5</span></code>(output_path: str | Path = “data/processed/mnist.h5”, train: bool = True, download: bool = True, labels_to_keep: list[int] | None = None) -&gt; Path</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">output_path</span></code>: path to write the .h5 file (parent dir is created if missing).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">train</span></code>: True -&gt; download/write the training split; False -&gt; write the test split.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download</span></code>: allow torchvision to download MNIST if missing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">labels_to_keep</span></code>: optional list of integer labels to keep (e.g. [4,5,6,7,8,9]). If provided the function filters images/labels before writing.</p></li>
+<li><p>Returns the Path to the written HDF5 file.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>utils/mnist_dataset.py</p>
+<ul>
+<li><p>class <code class="docutils literal notranslate"><span class="pre">MnistH5Dataset</span></code>(torch.utils.data.Dataset)</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__</span></code>(h5_path: str | Path, transform: Optional[Callable] = None, target_transform: Optional[Callable] = None)</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">h5_path</span></code>: path to an HDF5 file containing <code class="docutils literal notranslate"><span class="pre">images</span></code> and <code class="docutils literal notranslate"><span class="pre">labels</span></code> datasets.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">transform</span></code>: optional transform applied to the image tensor (after scaling to [0,1]).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">target_transform</span></code>: optional transform applied to the label (used to remap 4..9 -&gt; 0..5 for SMLP).</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__len__()</span></code>: returns number of samples (reads labels shape lazily).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__getitem__</span></code>(idx): returns (img_tensor, label). Image is a float tensor in [0,1] with shape (C,H,W).</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>models/smlp.py</p>
+<ul>
+<li><p>class <code class="docutils literal notranslate"><span class="pre">SMLP</span></code>(nn.Module)</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__</span></code>(input_size=784, hidden_size=77, output_size=6)</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">input_size</span></code>: flattened image dimensionality (28*28=784)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hidden_size</span></code>: number of neurons per hidden layer (77 used in the project)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output_size</span></code>: number of classes (6 for digits 4..9 remapped to 0..5)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">forward(x)</span></code>: expects x shaped (B, input_size) and returns logits (B, output_size)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>DJSW/main.py</p>
+<ul>
+<li><p>Important CLI flags:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">--username</span></code> <username> (required) : selects the user’s pipeline (<code class="docutils literal notranslate"><span class="pre">sigurd</span></code>, <code class="docutils literal notranslate"><span class="pre">waly</span></code>, <code class="docutils literal notranslate"><span class="pre">dennis</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--exp_name</span></code> <name> (required) : experiment name used in checkpoints.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--output_dir</span></code> <path> (required) : directory for outputs and checkpoints (must exist).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--train</span></code> (flag) : run training when present; otherwise evaluation (requires –load_checkpoint).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--load_checkpoint</span></code> <path> : checkpoint path for evaluation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--num_epochs</span></code>, <code class="docutils literal notranslate"><span class="pre">--batch_size</span></code>, <code class="docutils literal notranslate"><span class="pre">--lr</span></code> : training hyperparameters.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>DJSW/train.py</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">train_model</span></code>(args): when <code class="docutils literal notranslate"><span class="pre">args.username</span></code> == ‘sigurd’ the pipeline:</p>
+<ol class="arabic simple">
+<li><p>Loads <code class="docutils literal notranslate"><span class="pre">data/processed/mnist_4_9.h5</span></code> with MnistH5Dataset(target_transform=lambda t: int(t)-4).</p></li>
+<li><p>Splits into train/val (90/10) via random_split.</p></li>
+<li><p>Creates DataLoaders and calls <code class="docutils literal notranslate"><span class="pre">train_pipeline</span></code> which flattens inputs and runs epochs training the model.</p></li>
+<li><p>Checkpoints saved to args dependent directory: <code class="docutils literal notranslate"><span class="pre">{args.output_dir}/{args.exp_name}_checkpoint_epoch_{N}.pt</span></code>.</p></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>DJSW/evaluate.py</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">evaluate_model</span></code>(args): requires args.load_checkpoint; when <code class="docutils literal notranslate"><span class="pre">args.username</span></code> == ‘sigurd’ it:</p>
+<ol class="arabic simple">
+<li><p>Loads <code class="docutils literal notranslate"><span class="pre">data/processed/mnist_4_9.h5</span></code> via MnistH5Dataset with the same target_transform used in training.</p></li>
+<li><p>Loads the checkpoint with <code class="docutils literal notranslate"><span class="pre">torch.load(...)</span></code> and <code class="docutils literal notranslate"><span class="pre">model.load_state_dict(...)</span></code> (if checkpoint wraps the state dict, use the robust snippet in the appendix).</p></li>
+<li><p>Flattens inputs before inference on test set.</p></li>
+<li><p>Computes metrics (accuracy, precision, recall, F1, balanced accuracy, etc.).</p></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="accuracy-metrics-in-depth">
+<h2>Accuracy &amp; metrics (in-depth)<a class="headerlink" href="#accuracy-metrics-in-depth" title="Link to this heading"></a></h2>
+<p>Approach and implementation:</p>
+<ul class="simple">
+<li><p>The evaluation code computes a variety of metrics: accuracy, precision, recall, F1, balanced accuracy, MSE/RMSE/MAE/R² when appropriate. These functions take inn the output predictions and labels, and output the respective measurement.</p></li>
+</ul>
+</section>
+<section id="running-someone-else-s-code">
+<h2>Running someone else’s code<a class="headerlink" href="#running-someone-else-s-code" title="Link to this heading"></a></h2>
+<p>The shared infrastructure (<code class="docutils literal notranslate"><span class="pre">DJSW/main.py</span></code>) and agreed wrapper structure for models/datasets simplified made running both my own and other models a breeze. Running on LUMI took a bit of time to set up, but it was mostly due to going through the course on windows and then switching to mac for the home exam.</p>
+<p>I also spent a bit of time debugging why pointing to folders in a certain way worked for other people and not for me, where I found that while someone starting the path with “../” worked for them, but I had to change it to “./” to make it work for me.</p>
+</section>
+<section id="someone-else-running-my-code">
+<h2>Someone else running my code<a class="headerlink" href="#someone-else-running-my-code" title="Link to this heading"></a></h2>
+<p>There were some minor issues when Dennis had to run my code. I had a typo in the filename for the saved test set. While I was able to quickly sort it out, and this is a small project so Dennis could likely have debugged the problem for himself if need be, it did provide an idea of the problems of collaborative coding. Especially having to stop in the middle of doing x and then being reliant on someone else to fix y before you can continue.</p>
+<p>What might have been done differently.</p>
+<ul class="simple">
+<li><p>We’ve run the code on LUMI using the <code class="docutils literal notranslate"><span class="pre">run.sh</span></code> file, adapting it for each run. Using only a single file reduces clutter, but keeping a separate one for each LUMI run might have allowed more reproducibility.</p></li>
+</ul>
+</section>
+<section id="tools-used">
+<h2>Tools used<a class="headerlink" href="#tools-used" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>PyTorch + torchvision — downloading the dataset and base functions for the MLP.</p></li>
+<li><p>h5py / HDF5 — dataset storage.</p></li>
+<li><p>Sphinx — documentation generation.</p></li>
+<li><p>PyTest — small unit tests for loader/writer.</p></li>
+<li><p>uv — While only used locally for prototyping, the course introduced me to uv as an alternative to conda. It is great! Much appreciated.</p></li>
+</ul>
+</section>
+<section id="lumi-experience-job-evidence">
+<h2>LUMI experience (job evidence)<a class="headerlink" href="#lumi-experience-job-evidence" title="Link to this heading"></a></h2>
+<p>Running on LUMI was an interesting experience. I learned a lot from it, not just LUMI specific stuff, but also got more comfortable with the linux terminal, which is also really nice.</p>
+<p>The following files are the job-files produced from training and evaluating on LUMI:</p>
+<ul class="simple">
+<li><p>Job slurm-14079744.out — 10 epoch training run. Checkpoint saved to <code class="docutils literal notranslate"><span class="pre">weights/SMLP/</span></code>.</p></li>
+<li><p>Job slurm-14362915.out - Evaluation run on WMLP.</p></li>
+</ul>
+</section>
+<section id="artifacts-and-repo-pointers">
+<h2>Artifacts and repo pointers<a class="headerlink" href="#artifacts-and-repo-pointers" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data/processed/mnist_4_9.h5</span></code> (training HDF5)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data/processed/mnist_test_9_5.h5</span></code> (test HDF5)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">weights/SMLP/</span></code> — saved model checkpoint from training</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reports/</span></code> — Slurm logs and run artifacts</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="johannes.html" class="btn btn-neutral float-left" title="Johannes report" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="WMLP.html" class="btn btn-neutral float-right" title="WMLP Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Dennis, Johannes Mørkrid, Sigurd and Youssef Wally.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+API Reference
+=============
+
+This page contains auto-generated API reference documentation [#f1]_.
+
+.. toctree::
+   :titlesonly:
+
+   /autoapi/dmlp/index
+   /autoapi/smlp/index
+   /autoapi/wmlp/index
+   /autoapi/DJSW/index
+   /autoapi/test_data/index
+   /autoapi/wdataloader/index
+   /autoapi/mnist_dataset/index
+   /autoapi/test_dataset_d/index
+   /autoapi/dataset_mnist03_h5/index
+   /autoapi/test_dataset_Sigurd/index
+   /autoapi/create_mnist_dataset/index
+   /autoapi/test_evaluation_metrics/index
+   /autoapi/download_prepare_mnist03/index
+
+.. [#f1] Created with `sphinx-autoapi <https://github.com/readthedocs/sphinx-autoapi>`_

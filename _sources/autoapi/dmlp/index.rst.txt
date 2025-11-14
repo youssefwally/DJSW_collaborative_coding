@@ -1,0 +1,56 @@
+dmlp
+====
+
+.. py:module:: dmlp
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   dmlp.DMLP
+
+
+Module Contents
+---------------
+
+.. py:class:: DMLP(input_dim, output_dim, hidden_dim=300, negative_slope=0.01)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   MLP with 3 hidden layers and 300 neurons in each layer.
+   LeakyReLU activation function.
+   Args:
+       input_dim: input dimension
+       output_dim: output dimension
+       hidden_dim: number of neurons in each hidden layer, default 300
+       negative_slope: negative slope of LeakyReLU activation function, default 0.01
+
+
+   .. py:attribute:: negative_slope
+      :value: 0.01
+
+
+
+   .. py:attribute:: net
+
+
+   .. py:method:: _init_weights()
+
+      Kaiming initialization for LeakyReLU
+
+
+
+   .. py:method:: forward(x)
+
+      Compute forward pass.
+
+      Args:
+          x: Input tensor of shape (N, input_dim).
+
+      Returns: Output tensor of shape (N, output_dim).
+
+
+

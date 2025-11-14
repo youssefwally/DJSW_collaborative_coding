@@ -1,0 +1,411 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Johannes report &mdash; DJSW Collaborative Coding Template 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Sigurd — Individual task" href="sigurd.html" />
+    <link rel="prev" title="Dennis Documentation" href="dennis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            DJSW Collaborative Coding Template
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About this code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dennis.html">Dennis Documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Johannes report</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#evaluation-metrics">Evaluation metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sphinx-documentation">Sphinx documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pytest-testing">pytest testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#experiences-working-on-the-project">Experiences working on the project</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#running-another-person-s-code">Running another person’s code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#having-other-people-run-my-code">Having other people run my code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-jobs-on-lumi">Running jobs on LUMI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sigurd.html">Sigurd — Individual task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WMLP.html">WMLP Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DJSW Collaborative Coding Template</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Johannes report</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/johannes.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="johannes-report">
+<h1>Johannes report<a class="headerlink" href="#johannes-report" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>As the only non-ML person on the project my tasks was mainly to implement evaluation metrics used to evaluate the others models and review the others code. In addition, as I’m developing my own <em>Julia</em> package, a major focus has been on implementing automated documentation and unit-testing, by using <em>GitHub Actions</em>.</p>
+</section>
+<section id="evaluation-metrics">
+<h2>Evaluation metrics<a class="headerlink" href="#evaluation-metrics" title="Link to this heading"></a></h2>
+<p>The metrics implemented are <code class="docutils literal notranslate"><span class="pre">accuracy</span></code>, <code class="docutils literal notranslate"><span class="pre">precision</span></code>, <code class="docutils literal notranslate"><span class="pre">recall</span></code> and <code class="docutils literal notranslate"><span class="pre">f1_score</span></code>, with the <code class="docutils literal notranslate"><span class="pre">balanced_accuracy</span></code> being implemented by <a class="reference internal" href="WMLP.html"><span class="std std-doc">Waly</span></a>.</p>
+<p>Out of the 4 metrics, <code class="docutils literal notranslate"><span class="pre">accuracy</span></code> was definitely the simplest to implement, being essentially:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">accuracy</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="n">accuracy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_true</span> <span class="o">==</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">y_true</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">accuracy</span>
+</pre></div>
+</div>
+<p>However, the definition for accuracy for multi-class classification was the hardest to understand as it seemed complicated at first. As I’m not well versed in ML I was not sure which averaging mode is typically used when evaluating models, and therefore I added it as a <code class="docutils literal notranslate"><span class="pre">str</span></code> switch supporting both “micro” and “macro” averages. See for instance the implementation of <code class="docutils literal notranslate"><span class="pre">recall</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">recall</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;macro&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate recall for multi-class classification.</span>
+<span class="sd">        </span>
+<span class="sd">    Ratio of relevant retrieved instances to number of relevant instances.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        y_true: Ground truth labels (1D array-like)</span>
+<span class="sd">        y_pred: Predicted labels (1D array-like)</span>
+<span class="sd">        average: Averaging mode, macro or micro (str)</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Recall score between 0 and 1</span>
+<span class="sd">        </span>
+<span class="sd">    Raises:</span>
+<span class="sd">        AssertionError: If inputs are invalid</span>
+<span class="sd">        ValueError: If computation fails</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+  
+    <span class="c1"># Get unique classes</span>
+    <span class="n">classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)))</span>
+        
+    <span class="c1"># Calculate true positives (tp) and false negatives (fn) for each class</span>
+    <span class="n">tps</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">fns</span> <span class="o">=</span> <span class="p">[]</span>        
+    <span class="k">for</span> <span class="n">cl</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
+        <span class="n">tp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">y_true</span> <span class="o">==</span> <span class="n">cl</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">cl</span><span class="p">))</span>
+        <span class="n">fn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">y_true</span> <span class="o">==</span> <span class="n">cl</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_pred</span> <span class="o">!=</span> <span class="n">cl</span><span class="p">))</span>
+        <span class="n">tps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tp</span><span class="p">)</span> 
+        <span class="n">fns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+    
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">average</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;average (argument) needs to be a string (str)&quot;</span>
+        
+    <span class="c1"># For ease of computation of mean</span>
+    <span class="n">tps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">tps</span><span class="p">)</span>
+    <span class="n">fns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">fns</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">average</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;macro&quot;</span><span class="p">:</span>
+        <span class="c1"># Make sure to not divide by zero</span>
+        <span class="n">recalls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">tps</span> <span class="o">+</span> <span class="n">fns</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tps</span> <span class="o">/</span> <span class="p">(</span><span class="n">tps</span> <span class="o">+</span> <span class="n">fns</span><span class="p">))</span>
+        <span class="n">recall</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">recalls</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">average</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;micro&quot;</span><span class="p">:</span>
+        <span class="n">relevant</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">tps</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fns</span><span class="p">)</span> 
+        <span class="k">if</span> <span class="n">relevant</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">recall</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">recall</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">tps</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">relevant</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;average should be &#39;macro&#39; or &#39;micro&#39;, </span><span class="si">{</span><span class="n">average</span><span class="si">}</span><span class="s2"> was given&quot;</span><span class="p">)</span>       
+    
+    <span class="k">return</span> <span class="n">recall</span>
+</pre></div>
+</div>
+<p>This is also supported for <code class="docutils literal notranslate"><span class="pre">precision</span></code> where the only difference is essentially the definition where the true negative (<code class="docutils literal notranslate"><span class="pre">tn</span></code>) is swapped with the true positive (<code class="docutils literal notranslate"><span class="pre">tp</span></code>). I also saw some mentions of the f1 score, so I wanted to implement it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate f1 for multi-class classification.</span>
+<span class="sd">        </span>
+<span class="sd">    Combines precision and recall using the harmonic mean</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        y_true: Ground truth labels (1D array-like)</span>
+<span class="sd">        y_pred: Predicted labels (1D array-like)</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: F1 score between 0 and 1</span>
+<span class="sd">        </span>
+<span class="sd">    Raises:</span>
+<span class="sd">        AssertionError: If inputs are invalid</span>
+<span class="sd">        ValueError: If computation fails</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">rec</span> <span class="o">=</span> <span class="n">recall</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">prec</span> <span class="o">=</span> <span class="n">precision</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">rec</span> <span class="o">+</span> <span class="n">prec</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">f1</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">prec</span><span class="o">*</span><span class="n">rec</span><span class="o">/</span><span class="p">(</span><span class="n">rec</span> <span class="o">+</span> <span class="n">prec</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">f1</span> <span class="o">=</span> <span class="mi">0</span>
+      
+    <span class="k">return</span> <span class="n">f1</span>
+</pre></div>
+</div>
+</section>
+<section id="sphinx-documentation">
+<h2>Sphinx documentation<a class="headerlink" href="#sphinx-documentation" title="Link to this heading"></a></h2>
+<p>Choose to follow mostly the <a class="reference external" href="https://fys-8805-collaborative-coding.github.io/lecture-material/documentation/">tutorial</a> on how to setup <em>Sphinx</em>, as it was new to me. I also tried to make the folder structure similar to how I have implemented it in my own <em>Julia</em> project, however it seemed to complicate the website paths.</p>
+<p>When it comes to automating the documentation, the instructions in the tutorial seemed outdated and with the way our project was setup I had to manually install the dependencies:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build documentation</span>
+
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">main</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">main</span><span class="w"> </span><span class="p p-Indicator">]</span>
+
+<span class="nt">permissions</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">docs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout</span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up micromamba</span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mamba-org/setup-micromamba@v1</span><span class="w"> </span><span class="c1">#uses https://github.com/mamba-org/setup-micromamba</span>
+<span class="w">      </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">create-args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
+<span class="w">          </span><span class="no">python=3.12</span>
+<span class="w">          </span><span class="no">pip</span>
+<span class="w">        </span><span class="nt">environment-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs-env</span>
+<span class="w">        </span><span class="nt">micromamba-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;latest&#39;</span>
+<span class="w">        </span><span class="nt">generate-run-shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">pip install -r docs/requirements-docs.txt</span>
+<span class="w">        </span><span class="no">  </span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sphinx build</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">sphinx-build docs docs/_build</span>
+<span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bash -el {0}</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy to GitHub Pages</span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">peaceiris/actions-gh-pages@v4</span>
+<span class="w">      </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ github.event_name == &#39;push&#39; &amp;&amp; github.ref == &#39;refs/heads/main&#39; }}</span>
+<span class="w">      </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">publish_branch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gh-pages</span>
+<span class="w">        </span><span class="nt">github_token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span>
+<span class="w">        </span><span class="nt">publish_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs/_build/</span>
+<span class="w">        </span><span class="nt">force_orphan</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<p>There might have been a better way to do it but I’m new to <em>yaml</em> and <em>Python</em> related <em>GitHub Actions</em>.</p>
+</section>
+<section id="pytest-testing">
+<h2>pytest testing<a class="headerlink" href="#pytest-testing" title="Link to this heading"></a></h2>
+<p>Writing tests was daunting at first, specially since I have never used <em>pytest</em>, but by writing comments about what wanted to test made it simpler to create simple states that tests some of the common mistakes in which the metrics might be called. Another important aspect was to check that the asserts works as expected such that metrics produce sensible results. Most tests looks something like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_recall</span><span class="p">():</span>
+    <span class="n">y_1d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
+    <span class="n">y_2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">))</span>
+    <span class="c1"># Check that passing y_true 2d raises errror</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">AssertionError</span><span class="p">):</span>
+        <span class="n">recall</span><span class="p">(</span><span class="n">y_2d</span><span class="p">,</span> <span class="n">y_1d</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;macro&quot;</span><span class="p">)</span>
+    <span class="c1"># Check that passing y_pred 2d raises errror</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">AssertionError</span><span class="p">):</span>
+        <span class="n">recall</span><span class="p">(</span><span class="n">y_1d</span><span class="p">,</span> <span class="n">y_2d</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;macro&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Check that disimilar lengths raises error</span>
+    <span class="n">y_longer</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">AssertionError</span><span class="p">):</span>
+        <span class="n">recall</span><span class="p">(</span><span class="n">y_longer</span><span class="p">,</span> <span class="n">y_1d</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;macro&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Check that empty error raises error</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">AssertionError</span><span class="p">):</span>
+        <span class="n">y_empty</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+        <span class="n">recall</span><span class="p">(</span><span class="n">y_empty</span><span class="p">,</span> <span class="n">y_empty</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;macro&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Check that average = not a string raises error</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">AssertionError</span><span class="p">):</span>
+        <span class="n">recall</span><span class="p">(</span><span class="n">y_1d</span><span class="p">,</span> <span class="n">y_1d</span><span class="p">,</span> <span class="n">average</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">AssertionError</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">macro</span><span class="p">():</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="n">recall</span><span class="p">(</span><span class="n">y_1d</span><span class="p">,</span> <span class="n">y_1d</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="n">macro</span><span class="p">)</span>
+
+    <span class="c1"># Check that average &#39;macro&#39; and &#39;micro&#39; works, and that &#39;mid&#39; raises error</span>
+    <span class="k">assert</span> <span class="n">recall</span><span class="p">(</span><span class="n">y_1d</span><span class="p">,</span> <span class="n">y_1d</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;macro&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mf">1.0</span>
+    <span class="k">assert</span> <span class="n">recall</span><span class="p">(</span><span class="n">y_1d</span><span class="p">,</span> <span class="n">y_1d</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;micro&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mf">1.0</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">recall</span><span class="p">(</span><span class="n">y_1d</span><span class="p">,</span> <span class="n">y_1d</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;mid&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Check that .lower works</span>
+    <span class="k">assert</span> <span class="n">recall</span><span class="p">(</span><span class="n">y_1d</span><span class="p">,</span> <span class="n">y_1d</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;MACRO&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mf">1.0</span>
+    <span class="k">assert</span> <span class="n">recall</span><span class="p">(</span><span class="n">y_longer</span><span class="p">,</span> <span class="n">y_longer</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;MaCrO&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mf">1.0</span>
+
+    <span class="c1"># Check that returns known results</span>
+    <span class="n">y_other</span> <span class="o">=</span> <span class="n">y_1d</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">y_other</span><span class="p">[</span><span class="o">-</span><span class="mi">32</span><span class="p">:]</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="n">recall</span><span class="p">(</span><span class="n">y_1d</span><span class="p">,</span> <span class="n">y_other</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;macro&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.375</span>
+    <span class="k">assert</span> <span class="n">recall</span><span class="p">(</span><span class="n">y_1d</span><span class="p">,</span> <span class="n">y_other</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;micro&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.75</span>
+</pre></div>
+</div>
+<p>Having previously set-up the <em>Sphinx</em> related action made setting up the automatic testing nearly trivial, where the only difference was to run <code class="docutils literal notranslate"><span class="pre">pytest</span></code> instead of <code class="docutils literal notranslate"><span class="pre">sphinx-build</span> <span class="pre">...</span></code> and making sure to use the correct dependency file:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Automatic testing</span>
+
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">main</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">main</span><span class="w"> </span><span class="p p-Indicator">]</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout</span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up micromamba</span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mamba-org/setup-micromamba@v1</span><span class="w"> </span><span class="c1">#uses https://github.com/mamba-org/setup-micromamba</span>
+<span class="w">      </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">create-args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
+<span class="w">          </span><span class="no">python=3.12</span>
+<span class="w">          </span><span class="no">pip</span>
+<span class="w">        </span><span class="nt">environment-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs-env</span>
+<span class="w">        </span><span class="nt">micromamba-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;latest&#39;</span>
+<span class="w">        </span><span class="nt">generate-run-shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">pip install -r requirements.txt</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run tests</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">pytest</span>
+<span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bash -el {0}</span>
+</pre></div>
+</div>
+</section>
+<section id="experiences-working-on-the-project">
+<h2>Experiences working on the project<a class="headerlink" href="#experiences-working-on-the-project" title="Link to this heading"></a></h2>
+<section id="running-another-person-s-code">
+<h3>Running another person’s code<a class="headerlink" href="#running-another-person-s-code" title="Link to this heading"></a></h3>
+<p>As I’m not a ML-researcher myself it was a bit daunting to understand what the other’s code did, and although strictly not necessary I ended up exploring the data and models to get a better understanding of what the code actually did. What was maybe the most difficult was to understand how the model, optimizer and loss criterion was able to communicate with each other in the <code class="docutils literal notranslate"><span class="pre">train_epoch</span></code> and <code class="docutils literal notranslate"><span class="pre">validate</span></code> functions, as I had no prior knowledge of the underlying torch tensors and the dynamical computational graphs used by the autograd system. Yet again, not necessary, but when reviewing the code I could not wrap my head around how the code worked.</p>
+<p>In the beginning I also commented a lot on the others work, as I was very unfamiliar with how to properly set up a python project, and I recall trying to make sure that the <em>uv</em> environment identically reproduced the <em>conda</em> environment. I had no prior knowledge with <em>uv</em> and the dependency system works differently from <em>Julia</em>, but in the end I hope that properly reviewing the <em>uv</em> environment building led to both me and Dennis learning it better.</p>
+<p>Another aspect of the collaboration which was a bit tricky was knowing when it was okay to delete seemingly stale files. I ended up waiting till the end of the project to do so, but perhaps if I had more time I would of properly discussed it in an issue. It was also a bit fuzy who was responsible for reporting the evaluation scores in the <code class="docutils literal notranslate"><span class="pre">README.md</span></code>, with everyone ending up doing so.</p>
+</section>
+<section id="having-other-people-run-my-code">
+<h3>Having other people run my code<a class="headerlink" href="#having-other-people-run-my-code" title="Link to this heading"></a></h3>
+<p>The only issue I can recall with others running my code was that I messed up the indentation in the <code class="docutils literal notranslate"><span class="pre">evaluate.py</span></code> file, which broke the code and which made it harder for Dennis to understand what I had implemented. This was however quickly sorted out. There was also some confusion around the documentation, which was discussed in person, hence little information can be found about it in the issues or pull requests.</p>
+</section>
+<section id="running-jobs-on-lumi">
+<h3>Running jobs on LUMI<a class="headerlink" href="#running-jobs-on-lumi" title="Link to this heading"></a></h3>
+<p>The main bedrock was laid by Waly, which made running the jobs on <em>LUMI</em> quite simple, but the
+<a class="reference external" href="https://github.com/Lumi-supercomputer/LUMI-AI-Guide">AI guide</a> from <em>LUMI</em> also turned out to be quite useful. My main struggle was with pushing to <em>GitHub</em>, which ended up requiring setting up a <em>SSH key</em> linking <em>GitHub</em> to <em>LUMI</em> and changing the <em>remote</em> url.</p>
+<p>I evaluated the 4 sets of weights and biases that I found in the <code class="docutils literal notranslate"><span class="pre">weights</span></code> folder:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Model weights and biases filename</p></th>
+<th class="head"><p>Slurm report (ID)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DMLP</p></td>
+<td><p>dmlp_test_1_checkpoint_epoch_10.pt</p></td>
+<td><p>slurm-14592009.out</p></td>
+</tr>
+<tr class="row-odd"><td><p>DMLP</p></td>
+<td><p>dennis_train2_checkpoint_epoch_20.pt</p></td>
+<td><p>slurm-14592278.out</p></td>
+</tr>
+<tr class="row-even"><td><p>SMLP</p></td>
+<td><p>smlp_test_1_checkpoint_epoch_10.pt</p></td>
+<td><p>slurm-14591540.out</p></td>
+</tr>
+<tr class="row-odd"><td><p>WMLP</p></td>
+<td><p>wmlp_train_1_checkpoint_epoch_100.pt</p></td>
+<td><p>slurm-1491007.out</p></td>
+</tr>
+</tbody>
+</table>
+<p>(I also ran the code in training mode on my local computer out of curiosity)</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dennis.html" class="btn btn-neutral float-left" title="Dennis Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sigurd.html" class="btn btn-neutral float-right" title="Sigurd — Individual task" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Dennis, Johannes Mørkrid, Sigurd and Youssef Wally.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

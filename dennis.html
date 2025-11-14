@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dennis Documentation &mdash; DJSW Collaborative Coding Template 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Johannes report" href="johannes.html" />
+    <link rel="prev" title="About this code" href="about.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            DJSW Collaborative Coding Template
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About this code</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Dennis Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#implementation-tasks">Implementation tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#implementation">Implementation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-the-dataset">Creating the dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementing-the-mnist03-dataset-loader">Implementing the MNIST03 Dataset Loader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementing-dmlp">Implementing DMLP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#train-and-evaluate">Train and evaluate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing">Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#documentation">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#challenges">Challenges</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#running-another-person-s-code">Running another person’s code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#another-person-running-my-code">Another person running my code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tools">Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lumi">LUMI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="johannes.html">Johannes report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sigurd.html">Sigurd — Individual task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WMLP.html">WMLP Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DJSW Collaborative Coding Template</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Dennis Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/dennis.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dennis-documentation">
+<h1>Dennis Documentation<a class="headerlink" href="#dennis-documentation" title="Link to this heading"></a></h1>
+<section id="implementation-tasks">
+<h2>Implementation tasks<a class="headerlink" href="#implementation-tasks" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Create a MNIST03 dataset h5py file. MNIST03 is a limited MNIST variant including only data for numbers 0-3.</p></li>
+<li><p>Implement dataset loader for MNIST03.</p></li>
+<li><p>Implement MLP with 3 hidden layers, 300 neurons in each layer, LeakyReLU activation function</p></li>
+<li><p>Write a test script to check loaded data</p></li>
+<li><p>Train DMLP on LUMI and provide the model weights</p></li>
+<li><p>Evaluate MNIST49 (Sigurd’s dataset) on SMLP (Sigurd’s model) on LUMI</p></li>
+<li><p>Prepare individual documentation</p></li>
+</ol>
+</section>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading"></a></h2>
+<section id="creating-the-dataset">
+<h3>Creating the dataset<a class="headerlink" href="#creating-the-dataset" title="Link to this heading"></a></h3>
+<p>Download the following original MNIST data files in gzip format</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">train-images-idx3-ubyte.gz</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">train-labels-idx1-ubyte.gz</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t10k-images-idx3-ubyte.gz</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t10k-labels-idx1-ubyte.gz</span></code></p></li>
+</ul>
+<p>and copy the files to <code class="docutils literal notranslate"><span class="pre">data/raw/MNIST_gz</span></code>. The script <code class="docutils literal notranslate"><span class="pre">datasetprep/download_prepare_mnist03.py</span></code> loads the raw train and test image data and labels from the gzip files and prepares a zipped numpy archive (<code class="docutils literal notranslate"><span class="pre">.npz</span></code>) and/or HDF5 file (<code class="docutils literal notranslate"><span class="pre">.h5</span></code>) of the reduced MNIST dataset of numbers 0-3, called MNIST03. Data and label splits in the ´.npz´ file are <code class="docutils literal notranslate"><span class="pre">X_train,</span> <span class="pre">y_train,</span> <span class="pre">X_val,</span> <span class="pre">y_val,</span> <span class="pre">X_test,</span> <span class="pre">y_test</span></code>. Data and label splits in the ´.h5´ file are <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">val,</span> <span class="pre">test</span></code>, image data is accessed through <code class="docutils literal notranslate"><span class="pre">.../images</span></code> and labels through <code class="docutils literal notranslate"><span class="pre">.../labels</span></code>.</p>
+</section>
+<section id="implementing-the-mnist03-dataset-loader">
+<h3>Implementing the MNIST03 Dataset Loader<a class="headerlink" href="#implementing-the-mnist03-dataset-loader" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Mnist03Dataset</span></code> class in <code class="docutils literal notranslate"><span class="pre">utils/dataset_mnist03_h5.py</span></code> is a dataset class for the MNIST03 dataset stored in HDF5 format. It loads the <code class="docutils literal notranslate"><span class="pre">mnist03.h5</span></code> dataset file in HDF5 format from the specified <code class="docutils literal notranslate"><span class="pre">h5_path</span></code> and returns image data and corresponding labels for the specified <code class="docutils literal notranslate"><span class="pre">split</span></code> as <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>. Available splits are <code class="docutils literal notranslate"><span class="pre">&quot;train&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;val&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;test&quot;</span></code>, image data and corresponding labels for each split are accessible through <code class="docutils literal notranslate"><span class="pre">/&lt;split&gt;/images</span></code> and <code class="docutils literal notranslate"><span class="pre">/&lt;split&gt;/labels</span></code>. The image data can be normalized to interval [0,1] through the <code class="docutils literal notranslate"><span class="pre">normalize</span></code> argument, default <code class="docutils literal notranslate"><span class="pre">True</span></code>. The image data is presented as Tensor with dimensions (N,28,28), N being the number of samples, but can be flattened to (1, 784) with using the <code class="docutils literal notranslate"><span class="pre">flatten</span></code> argument, default <code class="docutils literal notranslate"><span class="pre">True</span></code>. The <code class="docutils literal notranslate"><span class="pre">__len__</span></code> and <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> class methods ensure that the dataset class is compatible with PyTorch’s Dataloader. The <code class="docutils literal notranslate"><span class="pre">_ensure_open</span></code> method makes sure that one or multiple working processes in during data loading can access the HDF5 data efficiently in parallel, and the <code class="docutils literal notranslate"><span class="pre">__del__</span></code> method ensures that the data files are closed ones the workers have concluded access from the HDF5 data file.</p>
+</section>
+<section id="implementing-dmlp">
+<h3>Implementing DMLP<a class="headerlink" href="#implementing-dmlp" title="Link to this heading"></a></h3>
+<p>DMLP in <code class="docutils literal notranslate"><span class="pre">models/dmlp.py</span></code> is a model class for a MLP with 3 hidden layers and 300 neurons (argument <code class="docutils literal notranslate"><span class="pre">hidden_dim</span></code>, default 300) in each layer. It uses the LeakyReLU activation function, the negative slope is set with argument <code class="docutils literal notranslate"><span class="pre">negative_slope</span></code>, default is 0.01. It inherits from the PyToch <code class="docutils literal notranslate"><span class="pre">nn.Module</span></code> base class. The MLP is build as a <code class="docutils literal notranslate"><span class="pre">nn.Sequential</span></code> sequence of <code class="docutils literal notranslate"><span class="pre">nn.Linear</span></code> layer and <code class="docutils literal notranslate"><span class="pre">nn.LeakyReLU</span></code> activation function and initialized with Kaiming initialization in the <code class="docutils literal notranslate"><span class="pre">_init_weights</span></code> method. It requires input data as torch.Tensor of dimension (N, input_dim), <code class="docutils literal notranslate"><span class="pre">input_dim</span></code> is given as argument to the model. Using DMLP to train a model for MNIST03 requires the data from the dataset class to be flattened. The <code class="docutils literal notranslate"><span class="pre">forward</span></code> method returns the model output (of dimension <code class="docutils literal notranslate"><span class="pre">output_dim</span></code> given as input argument)</p>
+</section>
+<section id="train-and-evaluate">
+<h3>Train and evaluate<a class="headerlink" href="#train-and-evaluate" title="Link to this heading"></a></h3>
+<p>To train DMLP on the MNIST03 data run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># uv</span>
+<span class="n">uv</span> <span class="n">run</span> <span class="n">DJSW</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">username</span> <span class="n">dennis</span> <span class="o">--</span><span class="n">exp_name</span> <span class="n">train_name</span> <span class="o">--</span><span class="n">output_dir</span> <span class="o">./</span><span class="n">weights</span><span class="o">/</span><span class="n">DMLP</span><span class="o">/</span> <span class="o">--</span><span class="n">train</span> <span class="o">--</span><span class="n">num_epochs</span> <span class="mi">10</span> <span class="o">--</span><span class="n">batch_size</span> <span class="mi">64</span> <span class="o">--</span><span class="n">lr</span> <span class="mf">1e-3</span>
+<span class="c1"># else</span>
+<span class="n">python</span> <span class="n">DJSW</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">username</span> <span class="n">dennis</span> <span class="o">--</span><span class="n">exp_name</span> <span class="n">train_name</span> <span class="o">--</span><span class="n">output_dir</span> <span class="o">./</span><span class="n">weights</span><span class="o">/</span><span class="n">DMLP</span><span class="o">/</span> <span class="o">--</span><span class="n">train</span> <span class="o">--</span><span class="n">num_epochs</span> <span class="mi">10</span> <span class="o">--</span><span class="n">batch_size</span> <span class="mi">64</span> <span class="o">--</span><span class="n">lr</span> <span class="mf">1e-3</span>
+</pre></div>
+</div>
+<p>If the <code class="docutils literal notranslate"><span class="pre">--train</span></code> argument is set, <code class="docutils literal notranslate"><span class="pre">DJSW/main.py</span></code> calls the <code class="docutils literal notranslate"><span class="pre">train_model</span></code> function in <code class="docutils literal notranslate"><span class="pre">DJSW/train.py</span></code>.
+DMLP and the MNIST03 dataset class are available in <code class="docutils literal notranslate"><span class="pre">DJSW/train.py</span></code> through:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">models.dmlp</span> <span class="kn">import</span> <span class="n">DMLP</span> 
+<span class="kn">from</span> <span class="nn">utils.dataset_mnist03_h5</span> <span class="kn">import</span> <span class="n">Mnist03Dataset</span>
+</pre></div>
+</div>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">--username</span></code> argument <code class="docutils literal notranslate"><span class="pre">&quot;dennis&quot;</span></code> selects the MNIST03 train and val data splits for model training and validation respectively:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train_model</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">username</span> <span class="o">==</span> <span class="s2">&quot;dennis&quot;</span><span class="p">:</span>
+        <span class="n">ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">H5_DIR</span> <span class="o">=</span> <span class="n">ROOT</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;processed&quot;</span>
+        <span class="n">H5_DIR</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">train_dataset</span> <span class="o">=</span> <span class="n">Mnist03Dataset</span><span class="p">(</span><span class="n">h5_path</span><span class="o">=</span><span class="n">H5_DIR</span> <span class="o">/</span> <span class="s2">&quot;mnist03.h5&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
+        <span class="n">val_dataset</span> <span class="o">=</span> <span class="n">Mnist03Dataset</span><span class="p">(</span><span class="n">h5_path</span><span class="o">=</span><span class="n">H5_DIR</span> <span class="o">/</span> <span class="s2">&quot;mnist03.h5&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;val&quot;</span><span class="p">)</span>
+        <span class="n">img_dim</span> <span class="o">=</span> <span class="mi">784</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Within <code class="docutils literal notranslate"><span class="pre">train_model</span></code>, the <code class="docutils literal notranslate"><span class="pre">train_loader</span></code> and <code class="docutils literal notranslate"><span class="pre">val_loader</span></code> <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> objects are defined, taking <code class="docutils literal notranslate"><span class="pre">--batch_size</span></code> as argument for the batch size, default: 64. Moreover the function <code class="docutils literal notranslate"><span class="pre">train_pipeline</span></code> is called. For <code class="docutils literal notranslate"><span class="pre">username=&quot;dennis&quot;</span></code>,<code class="docutils literal notranslate"><span class="pre">train_pipeline</span></code> sets <code class="docutils literal notranslate"><span class="pre">DMLP</span></code> as model:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train_pipeline</span><span class="p">(</span><span class="n">img_dim</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">username</span> <span class="o">==</span> <span class="s2">&quot;dennis&quot;</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">DMLP</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="n">img_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Training over number of epochs defined through <code class="docutils literal notranslate"><span class="pre">--num_epochs</span></code> argument, default: 10. The loss function used for training is cross entropy loss, and optimization is done with Adam:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>  <span class="c1"># Loss and optimizer</span>
+    <span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">lr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The optimizer takes the learning rate from the <code class="docutils literal notranslate"><span class="pre">--lr</span></code> argument, default: 1e-3. For <code class="docutils literal notranslate"><span class="pre">--num_epochs</span> <span class="pre">&gt;10</span></code>, every 10th epoch a model weights checkpoint is saved in the output directory specified by the <code class="docutils literal notranslate"><span class="pre">--output_dir</span></code> argument and named according to the string given to the <code class="docutils literal notranslate"><span class="pre">--exp_name</span></code> argument</p>
+<p>To evaluate the performance of DMLP on the MNIST03 test data run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># uv</span>
+<span class="n">uv</span> <span class="n">run</span> <span class="n">DJSW</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">username</span> <span class="n">dennis</span> <span class="o">--</span><span class="n">exp_name</span> <span class="n">test_name</span> <span class="o">--</span><span class="n">output_dir</span> <span class="o">.</span> <span class="o">--</span><span class="n">load_checkpoint</span> <span class="o">./</span><span class="n">weights</span><span class="o">/</span><span class="n">DMLP</span><span class="o">/</span><span class="n">train_name_checkpoint_epoch_10</span><span class="o">.</span><span class="n">pt</span>
+<span class="c1"># else</span>
+<span class="n">python</span> <span class="n">DJSW</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">username</span> <span class="n">dennis</span> <span class="o">--</span><span class="n">exp_name</span> <span class="n">test_name</span> <span class="o">--</span><span class="n">output_dir</span> <span class="o">.</span> <span class="o">--</span><span class="n">load_checkpoint</span> <span class="o">./</span><span class="n">weights</span><span class="o">/</span><span class="n">DMLP</span><span class="o">/</span><span class="n">train_name_checkpoint_epoch_10</span><span class="o">.</span><span class="n">pt</span>
+</pre></div>
+</div>
+<p>If the <code class="docutils literal notranslate"><span class="pre">--train</span></code> argument is omitted and the <code class="docutils literal notranslate"><span class="pre">--load_checkpoint</span></code> argument is not <code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">DJSW/main.py</span></code> calls the <code class="docutils literal notranslate"><span class="pre">eval_model</span></code> function in <code class="docutils literal notranslate"><span class="pre">DJSW/evaluate.py</span></code>.
+DMLP and the MNIST03 dataset class are available in <code class="docutils literal notranslate"><span class="pre">DJSW/evaluate.py</span></code> through:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">models.dmlp</span> <span class="kn">import</span> <span class="n">DMLP</span> 
+<span class="kn">from</span> <span class="nn">utils.dataset_mnist03_h5</span> <span class="kn">import</span> <span class="n">Mnist03Dataset</span>
+</pre></div>
+</div>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">--username</span></code> argument <code class="docutils literal notranslate"><span class="pre">&quot;dennis&quot;</span></code> selects the MNIST03 test data splits for model evaluation, sets the model to <code class="docutils literal notranslate"><span class="pre">DMLP</span></code> and loads the model weights from the correct file specified by the <code class="docutils literal notranslate"><span class="pre">--load_checkpoint</span></code> argument:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">evaluate_model</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="c1"># Load test data</span>
+    <span class="o">...</span>
+    <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">username</span> <span class="o">==</span> <span class="s2">&quot;dennis&quot;</span><span class="p">:</span>
+        <span class="n">ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">H5_DIR</span> <span class="o">=</span> <span class="n">ROOT</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;processed&quot;</span>
+        <span class="n">H5_DIR</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">test_dataset</span> <span class="o">=</span> <span class="n">Mnist03Dataset</span><span class="p">(</span><span class="n">h5_path</span><span class="o">=</span> <span class="n">H5_DIR</span> <span class="o">/</span> <span class="s2">&quot;mnist03.h5&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+        <span class="n">test_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">img_dim</span> <span class="o">=</span> <span class="mi">784</span>
+    <span class="o">...</span>
+
+    <span class="c1"># Load model</span>
+    <span class="n">model_path</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">load_checkpoint</span>
+    <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_path</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+    <span class="o">...</span>
+    <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">username</span> <span class="o">==</span> <span class="s2">&quot;dennis&quot;</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">DMLP</span><span class="p">(</span>
+            <span class="n">input_dim</span><span class="o">=</span><span class="n">img_dim</span><span class="p">,</span>
+            <span class="n">output_dim</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+            <span class="n">hidden_dim</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+            <span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.01</span>
+        <span class="p">)</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>No file is written, but the evaluation results are printed to the terminal. The evaluation results comprise mse, rmse, mae, r2, balanced accuracy, accuracy, precision, recall and f1.</p>
+</section>
+<section id="testing">
+<h3>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h3>
+<p>The file <code class="docutils literal notranslate"><span class="pre">tests/test_dataset_d.py</span></code> implements two test functions for the MNIST03 dataset. The test can be run in terminal with</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span> <span class="n">tests</span><span class="o">/</span><span class="n">test_dataset_d</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">test_d_data_available():</span></code> checks whether the <code class="docutils literal notranslate"><span class="pre">mnist03.h5</span></code> exists in the <code class="docutils literal notranslate"><span class="pre">data/processed/</span></code> directory and outputs an error message if not</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test_mnist03_dataset():</span></code>checks whether data type and shape of the output of <code class="docutils literal notranslate"><span class="pre">Mnist03Dataset</span></code> is correct</p></li>
+</ul>
+<p>The test are inserted in the automatic testing workflow on GitHub</p>
+</section>
+<section id="documentation">
+<h3>Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h3>
+<p>Documentation was set up with Sphinx and deployed to GitHub Pages. The individual reports, including this one, <code class="docutils literal notranslate"><span class="pre">dennis.md</span></code> are added under <code class="docutils literal notranslate"><span class="pre">docs/</span></code>.</p>
+</section>
+</section>
+<section id="challenges">
+<h2>Challenges<a class="headerlink" href="#challenges" title="Link to this heading"></a></h2>
+<section id="running-another-person-s-code">
+<h3>Running another person’s code<a class="headerlink" href="#running-another-person-s-code" title="Link to this heading"></a></h3>
+<p>The project structure is more complex than what I have experienced so far. So orienting inside the template took some time. After that, inserting my code inside the ./DJSW/main.py, ./DJSW/train.py, and ./DJSW/evaluate.py, a structure and code proposed and set up by Waly, was working well. Using functions with argument parser in python was new to me, but the provided example was enough to understand how this works. All in all there were surprisingly few problems when running other’s code. One exception was evaluation of Sigurd’s model and dataset on LUMI. I probably should have tested running the code locally before moving to LUMI, but I didn’t, so I found out while submitting the code to LUMI that Sigurd’s data file naming was not matching what he referenced to in the evaluation script. Easily and quickly fixed by him, so I could finish the work on LUMI, but for more complex code I can imagine that troubleshooting on HPC resources becomes more difficult.</p>
+</section>
+<section id="another-person-running-my-code">
+<h3>Another person running my code<a class="headerlink" href="#another-person-running-my-code" title="Link to this heading"></a></h3>
+<p>Making sure that my code fits into the proposed project structure so others could run it as is, is not something I had to be aware of before. Setting up the model and dataset loader with the given structure in mind took some time. This was the first project I worked with uv. I was not sure whether anyone else would use uv, but wanted to make sure that installation and running instructions are given not only for pip and conda, but also uv. Since uv uses a <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> and <code class="docutils literal notranslate"><span class="pre">uv.lock</span></code> file, instead of an environment.yaml or requirements.txt file to keep track of package dependencies, I needed to make sure to keep all up to date. When updating the installation instructions in the readme with uv, Johannes’ tested the instructions, was not able to set it up, and gave good feedback so I could make it work before he accepted the pull request.
+Also automatic testing and building the documentation worked without problems for my code.</p>
+</section>
+</section>
+<section id="tools">
+<h2>Tools<a class="headerlink" href="#tools" title="Link to this heading"></a></h2>
+<p>I have no previous experience from collaboration with code, so almost all the concepts covered in the lecture had good novelty value.
+I could make use of most of the taught tools:</p>
+<ol class="arabic simple">
+<li><p>Git/Github: Had some basic knowledge about git from before but only used it sporadically and only locally.
+Working on this project improved my local git workflow and working speed. Collaborating on GitHub has been a new experience.</p></li>
+<li><p>Documentation with Sphinx: Adding a comprehensive documentation of own code and code from collaborators, and publish the documentation on GitHub.</p></li>
+<li><p>Making a proper README.md</p></li>
+<li><p>Testing with pytest: so far I only have been working on small scientific codebases and have not yet experienced a need for proper testing,
+but see the value in collaborative projects, especially implemented with GitHub Actions, to have an automatic guard against errors caused by new commited code.</p></li>
+<li><p>Lintering with Ruff</p></li>
+<li><p>Writing a Dataset loader from scratch</p></li>
+<li><p>Insert my code in a larger project templates, like the structure set up for this project with the Cookiecutter library.
+Higher complexity than what I so far have been used to.</p></li>
+<li><p>Running Code on LUMI: First time using HPC resources, I find it quite complex to set up and a lot of details to be careful and aware about.
+But running the code once everything is set up was straightforward. Good opportunity to test HPC computing in a controlled environment.</p></li>
+<li><p>Creating a software licence.</p></li>
+<li><p>Making the repository installable.</p></li>
+<li><p>I started using uv for this project, very nice alternative to pip + pyenv</p></li>
+<li><p>Packing data with h5py, heard of HDF5 before but never used it, so having the HPC computing as an incentive to use it was a great opportunity.</p></li>
+</ol>
+</section>
+<section id="lumi">
+<h2>LUMI<a class="headerlink" href="#lumi" title="Link to this heading"></a></h2>
+<p>On LUMI, in the home directory under <code class="docutils literal notranslate"><span class="pre">/scratch/project_projectnumber</span></code>, create your working directory. Inside this working directory, clone the DSJW_collaborative_coding project</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">youssefwally</span><span class="o">/</span><span class="n">DJSW_collaborative_coding</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>To train the model <code class="docutils literal notranslate"><span class="pre">DMLP</span></code> on the MNIST03 train data, change the last line of <code class="docutils literal notranslate"><span class="pre">run.sh</span></code> to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">singularity</span> <span class="n">exec</span> <span class="o">-</span><span class="n">B</span> <span class="o">../../</span><span class="n">DJSW_env</span><span class="o">.</span><span class="n">sqsh</span><span class="p">:</span><span class="o">/</span><span class="n">user</span><span class="o">-</span><span class="n">software</span><span class="p">:</span><span class="n">image</span><span class="o">-</span><span class="n">src</span><span class="o">=/</span> <span class="o">../../</span><span class="n">lumi</span><span class="o">-</span><span class="n">pytorch</span><span class="o">-</span><span class="n">rocm</span><span class="o">-</span><span class="mf">6.2.4</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="mf">3.12</span><span class="o">-</span><span class="n">pytorch</span><span class="o">-</span><span class="n">v2</span><span class="mf">.7.1</span><span class="o">.</span><span class="n">sif</span> <span class="n">python</span> <span class="n">DJSW</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">username</span> <span class="n">dennis</span> <span class="o">--</span><span class="n">exp_name</span> <span class="n">train_name</span> <span class="o">--</span><span class="n">output_dir</span> <span class="o">./</span><span class="n">weights</span><span class="o">/</span><span class="n">DMLP</span><span class="o">/</span> <span class="o">--</span><span class="n">train</span> 
+</pre></div>
+</div>
+<p>and run inside the project folder</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sbatch</span> <span class="n">run</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>The slurm job id file for training DMLP on MNIST03 is <code class="docutils literal notranslate"><span class="pre">reports/DMLP_testing/slurm-14503531.out</span></code>. To evaluate Sigurd’s model SMLP on his data set MNIST49 (MNIST with only numbers 4-9) change the last line of <code class="docutils literal notranslate"><span class="pre">run.sh</span></code> to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">singularity</span> <span class="n">exec</span> <span class="o">-</span><span class="n">B</span> <span class="o">../../</span><span class="n">DJSW_env</span><span class="o">.</span><span class="n">sqsh</span><span class="p">:</span><span class="o">/</span><span class="n">user</span><span class="o">-</span><span class="n">software</span><span class="p">:</span><span class="n">image</span><span class="o">-</span><span class="n">src</span><span class="o">=/</span> <span class="o">../../</span><span class="n">lumi</span><span class="o">-</span><span class="n">pytorch</span><span class="o">-</span><span class="n">rocm</span><span class="o">-</span><span class="mf">6.2.4</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="mf">3.12</span><span class="o">-</span><span class="n">pytorch</span><span class="o">-</span><span class="n">v2</span><span class="mf">.7.1</span><span class="o">.</span><span class="n">sif</span> <span class="n">python</span> <span class="n">DJSW</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">username</span> <span class="n">sigurd</span> <span class="o">--</span><span class="n">exp_name</span> <span class="n">smlp_test_by_dennis</span> <span class="o">--</span><span class="n">load_checkpoint</span> <span class="n">weights</span><span class="o">/</span><span class="n">SMLP</span><span class="o">/</span><span class="n">smlp_test_1_checkpoint_epoch_10</span><span class="o">.</span><span class="n">pt</span> <span class="o">--</span><span class="n">output_dir</span> <span class="o">.</span> 
+</pre></div>
+</div>
+<p>and run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sbatch</span> <span class="n">run</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>again. The slurm job id file for evaluating SMLP on MNIST49 is <code class="docutils literal notranslate"><span class="pre">reports/DennistestingSMLP/slurm-14508000.out</span></code>.</p>
+<p>I’m still a bit overwhelmed by LUMI or HPC resources in general. First time running <code class="docutils literal notranslate"><span class="pre">run.sh</span></code>  I did the rookie mistake to run <code class="docutils literal notranslate"><span class="pre">main.py</span></code> directly in the LUMI terminal. Luckily I didn’t get banned immediately, but only after not finding the slurm job id file I realized I forgot to actually use slurm. Submitting a job and then having to wait until the job is done withouth having verbose feedback through for example status prints is something I need to get used to.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="about.html" class="btn btn-neutral float-left" title="About this code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="johannes.html" class="btn btn-neutral float-right" title="Johannes report" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Dennis, Johannes Mørkrid, Sigurd and Youssef Wally.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

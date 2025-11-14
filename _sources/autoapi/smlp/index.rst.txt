@@ -1,0 +1,70 @@
+smlp
+====
+
+.. py:module:: smlp
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   smlp.SMLP
+
+
+Module Contents
+---------------
+
+.. py:class:: SMLP(input_size=784, hidden_size=77, output_size=6)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Simple Multi-Layer Perceptron used in the project.
+
+   The network has four linear layers. The first three are followed by ReLU
+   activations and the final layer returns logits. The implementation expects
+   flattened inputs of shape ``(batch_size, input_size)`` (for MNIST: input_size=784).
+
+   Parameters
+   ----------
+   input_size : int
+       Dimensionality of the flattened input (default: 784 for 28x28 images).
+   hidden_size : int
+       Number of neurons in the hidden layers (default: 77 in this project).
+   output_size : int
+       Number of output classes (default: 6 for digits 4..9 remapped to 0..5).
+
+
+   .. py:attribute:: layer1
+
+
+   .. py:attribute:: layer2
+
+
+   .. py:attribute:: layer3
+
+
+   .. py:attribute:: layer4
+
+
+   .. py:attribute:: relu
+
+
+   .. py:method:: forward(x: torch.Tensor) -> torch.Tensor
+
+      Forward pass.
+
+      Parameters
+      ----------
+      x : torch.Tensor
+          Input tensor of shape (batch_size, input_size). The function does
+          not perform flattening; caller must supply a flattened tensor.
+
+      Returns
+      -------
+      torch.Tensor
+          Logits tensor of shape (batch_size, output_size).
+
+
+
