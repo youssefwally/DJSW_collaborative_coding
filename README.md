@@ -153,7 +153,7 @@ There are three models available:
 - `SMLP`: MLP with 4 hidden layers, 77 nodes per hidden layer and ReLU activations
 - `WMLP`: MLP with 2 hidden layers, 100 nodes per hidden layer and LeakyReLU activations
 
-There are also 3 corresponding dataset files and corresponding dataset loaders available:
+There are also three corresponding dataset files and corresponding dataset loaders available:
 - `mnist03.h5` with the `Mnist03Dataset` dataset class: MNIST data for numbers 0-3
 - `mnist_4_9.h5` with the `MnistH5Dataset` dataset class: MNIST data for numbers 4-9
 - `usps.h5` with the `USPS06Dataset` dataset class: USPS data
