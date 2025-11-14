@@ -71,7 +71,7 @@ Efficient Lumi-friendly ML Pipeline
 ## CITATION
 ```bibtex
 @software{DJSW2025,
-  author       = {Dennis and Johannes Mørkrid and Sigurd Almli Hanssen and Youssef Wally},
+  author       = {Dennis Adamek and Johannes Mørkrid and Sigurd Almli Hanssen and Youssef Wally},
   title        = {DJSW Collaborative Coding Template},
   year         = {2025},
   url          = {https://github.com/youssefwally/DJSW_collabrative_coding},
@@ -144,6 +144,39 @@ You can set up this project using either **uv** or **conda**.
 ### Verify Installation
 ```bash
 python -c 'import DJSW; print("Installation successful!")'
+```
+
+## Run the code
+
+There are three models available:
+- `DMLP`: MLP with 3 hidden layers, 300 nodes per hidden layer and LeakyReLU activations
+- `SMLP`: MLP with 4 hidden layers, 77 nodes per hidden layer and ReLU activations
+- `WMLP`: MLP with 2 hidden layers, 100 nodes per hidden layer and LeakyReLU activations
+
+There are also 3 corresponding dataset files and corresponding dataset loaders available:
+- `mnist03.h5` with the `Mnist03Dataset` dataset class: MNIST data for numbers 0-3
+- `mnist_4_9.h5` with the `MnistH5Dataset` dataset class: MNIST data for numbers 4-9
+- `usps.h5` with the `USPS06Dataset` dataset class: USPS data
+
+The following combinations of model and dataset are currently supported and can be accessed through the `--username` argument:
+1) `DMLP` with `Mnist03Dataset`: choose `--username dennis`
+2) `SMLP` with `MnistH5Dataset`: choose `--username sigurd`
+3) `WMLP` with `USPS06Dataset`: choose `--username waly`
+
+To train a model on the corresponding dataset run:
+```
+# uv
+uv run DJSW/main.py --username name --exp_name train_name --output_dir ./weights/ --train --num_epochs 10 --batch_size 64 --lr 1e-3
+# else
+python DJSW/main.py --username name --exp_name train_name --output_dir ./weights/ --train --num_epochs 10 --batch_size 64 --lr 1e-3
+```
+
+To evaluate a trained model on the test split of the corresponding dataset run:
+```
+# uv
+uv run DJSW/main.py --username name --exp_name test_name --output_dir . --load_checkpoint ./weights/train_name_checkpoint_epoch_10.pt
+# else
+python DJSW/main.py --username name --exp_name test_name --output_dir . --load_checkpoint ./weights/train_name_checkpoint_epoch_10.pt
 ```
 
 ## Individual reports
